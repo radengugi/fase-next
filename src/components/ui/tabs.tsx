@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, createContext, useContext, useState, useRef, useEffect } from "react"
+import { ReactNode, createContext, useContext, useState } from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/utils/cn"
 
@@ -12,13 +12,18 @@ interface TabsContextType {
 const TabsContext = createContext<TabsContextType | undefined>(undefined)
 
 export interface TabsProps {
-  defaultValue: string
+  defaultValue?: string
+  value?: string
+  onValueChange?: (value: string) => void
   children: ReactNode
   className?: string
 }
 
-export function Tabs({ defaultValue, children, className }: TabsProps) {
-  const [activeTab, setActiveTab] = useState(defaultValue)
+export function Tabs({ defaultValue = "", value: controlledValue, onValueChange, children, className }: TabsProps) {
+  const [internalValue, setInternalValue] = useState(defaultValue)
+
+  const activeTab = controlledValue !== undefined ? controlledValue : internalValue
+  const setActiveTab = onValueChange || setInternalValue
 
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>

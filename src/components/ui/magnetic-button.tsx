@@ -21,7 +21,7 @@ export function MagneticButton({
 
   return (
     <motion.button
-      ref={ref}
+      ref={ref as any}
       onClick={onClick}
       className={className}
       whileHover={{ scale: 1.05 }}

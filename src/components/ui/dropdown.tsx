@@ -83,9 +83,10 @@ export function DropdownTrigger({ placeholder = "Select...", className }: Dropdo
 export interface DropdownContentProps {
   children: ReactNode
   className?: string
+  align?: "start" | "end" | "center"
 }
 
-export function DropdownContent({ children, className }: DropdownContentProps) {
+export function DropdownContent({ children, className, align }: DropdownContentProps) {
   const context = useContext(DropdownContext)
   if (!context) throw new Error("DropdownContent must be used within Dropdown")
 
@@ -115,9 +116,10 @@ export interface DropdownItemProps {
   value: string
   children: ReactNode
   disabled?: boolean
+  onClick?: () => void
 }
 
-export function DropdownItem({ value, children, disabled }: DropdownItemProps) {
+export function DropdownItem({ value, children, disabled, onClick }: DropdownItemProps) {
   const context = useContext(DropdownContext)
   if (!context) throw new Error("DropdownItem must be used within Dropdown")
 
@@ -127,7 +129,7 @@ export function DropdownItem({ value, children, disabled }: DropdownItemProps) {
   return (
     <motion.button
       type="button"
-      onClick={() => !disabled && setSelectedValue(value)}
+      onClick={() => { if (!disabled) { setSelectedValue(value); onClick?.() } }}
       disabled={disabled}
       className={cn(
         "w-full flex items-center justify-between px-3 py-2 text-sm text-left transition-colors",

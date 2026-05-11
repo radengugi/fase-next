@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import { BaseRepository, type ApiResponse, type PaginatedResponse, type QueryParams } from './base.repository'
 
+export type { QueryParams } from './base.repository'
+
 export interface FileItem {
   id: string
   project_id: string | null
@@ -92,7 +94,7 @@ export class FileRepository extends BaseRepository {
         }
       }
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return { data: null, error: error.message || 'Unknown error', pagination: { page: 1, limit: 10, total: 0, totalPages: 0 } }
     }
   }
 
@@ -107,7 +109,7 @@ export class FileRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<FileItem>(null, error)
     }
   }
 
@@ -122,7 +124,7 @@ export class FileRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<FileItem>(null, error)
     }
   }
 
@@ -138,7 +140,7 @@ export class FileRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<FileItem>(null, error)
     }
   }
 

@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import type { ClientStatus } from '@/types/database.types'
 import { BaseRepository, type ApiResponse, type PaginatedResponse, type QueryParams } from './base.repository'
 
+export type { QueryParams } from './base.repository'
+
 export interface Client {
   id: string
   company_name: string

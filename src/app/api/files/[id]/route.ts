@@ -3,10 +3,11 @@ import { fileService } from '@/server/services/file.service'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const result = await fileService.getFileById(params.id)
+    const { id } = await params
+    const result = await fileService.getFileById(id)
 
     if (result.error && !result.data) {
       return NextResponse.json(result, { status: 404 })
@@ -23,10 +24,11 @@ export async function GET(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const result = await fileService.deleteFile(params.id)
+    const { id } = await params
+    const result = await fileService.deleteFile(id)
 
     if (result.error && !result.data) {
       return NextResponse.json(result, { status: 404 })

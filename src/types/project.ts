@@ -1,20 +1,26 @@
-export type ProjectStatus = "Planning" | "Design" | "Development" | "Revision" | "Testing" | "Deployment" | "Maintenance"
-export type ProjectPriority = "Low" | "Medium" | "High" | "Urgent"
+export type ProjectStatus = string
+export type ProjectPriority = string
 
 export interface Project {
   id: string
   name: string
   client_id: string
-  service_type: string
+  service_type?: string
   description: string | null
-  deadline: string | null
+  deadline?: string | null
+  end_date?: string | null
+  start_date?: string | null
+  budget?: number | null
   priority: ProjectPriority
   status: ProjectStatus
-  attachments: string[]
+  attachments?: string[]
   created_at: string
   updated_at: string
   client?: {
-    id: string
+    id?: string
+    company_name: string
+  }
+  clients?: {
     company_name: string
   }
   members?: ProjectMember[]

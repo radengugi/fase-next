@@ -11,7 +11,7 @@ interface TeamMemberDetailProps {
   onEdit: () => void
 }
 
-const roleColors: Record<string, "primary" | "success" | "warning" | "danger" | "info"> = {
+const roleColors: Record<string, "primary" | "success" | "warning" | "danger" | "info" | "default"> = {
   super_admin: "danger",
   admin: "warning",
   project_manager: "info",
@@ -88,7 +88,7 @@ export function TeamMemberDetail({ member, onEdit }: TeamMemberDetailProps) {
             <div>
               <p className="text-xs text-neutral-500">Joined</p>
               <p className="text-sm text-white">
-                {new Date(member.joined_date).toLocaleDateString()}
+                {member.joined_date ? new Date(member.joined_date).toLocaleDateString() : "—"}
               </p>
             </div>
           </div>

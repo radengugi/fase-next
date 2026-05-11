@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server'
 import type { UserRole } from '@/types/database.types'
 import { BaseRepository, type ApiResponse, type PaginatedResponse, type QueryParams } from './base.repository'
 
+export type { QueryParams } from './base.repository'
+export type { UserRole } from '@/types/database.types'
+
 export interface Profile {
   id: string
   email: string
@@ -77,7 +80,7 @@ export class ProfileRepository extends BaseRepository {
         }
       }
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return { data: null, error: error.message || 'Unknown error', pagination: { page: 1, limit: 10, total: 0, totalPages: 0 } }
     }
   }
 
@@ -92,7 +95,7 @@ export class ProfileRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Profile>(null, error)
     }
   }
 
@@ -108,7 +111,7 @@ export class ProfileRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Profile>(null, error)
     }
   }
 
@@ -124,7 +127,7 @@ export class ProfileRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Profile>(null, error)
     }
   }
 

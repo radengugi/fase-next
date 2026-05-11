@@ -49,7 +49,6 @@ export function LoginForm() {
     }
 
     const userRole = profile?.role
-    console.log('User role:', userRole)
 
     // Refresh and redirect based on role
     router.refresh()

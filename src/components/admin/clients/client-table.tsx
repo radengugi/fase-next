@@ -57,7 +57,7 @@ export function ClientTable() {
   const { showToast } = useToast()
   const { clients, loading, error, pagination: apiPagination, refetch } = useClients({
     pagination,
-    sorting: sorting[0] ? { field: sorting[0].id, order: sorting[0].desc ? 'desc' : 'asc' } : undefined,
+    sort: sorting[0] ? { field: sorting[0].id, order: sorting[0].desc ? 'desc' : 'asc' } : undefined,
     filters: columnFilters.map(f => ({ field: f.id, operator: 'eq', value: f.value as string }))
   })
 
@@ -80,7 +80,7 @@ export function ClientTable() {
       // Optimistically update the UI immediately
       refetch({
         pagination,
-        sorting: sorting[0] ? { field: sorting[0].id, order: sorting[0].desc ? 'desc' : 'asc' } : undefined,
+        sort: sorting[0] ? { field: sorting[0].id, order: sorting[0].desc ? 'desc' : 'asc' } : undefined,
         filters: columnFilters.map(f => ({ field: f.id, operator: 'eq', value: f.value as string }))
       })
     } else {
@@ -400,7 +400,7 @@ export function ClientTable() {
               setShowDrawer(false)
               refetch({
                 pagination,
-                sorting: sorting[0] ? { field: sorting[0].id, order: sorting[0].desc ? 'desc' : 'asc' } : undefined,
+                sort: sorting[0] ? { field: sorting[0].id, order: sorting[0].desc ? 'desc' : 'asc' } : undefined,
                 filters: columnFilters.map(f => ({ field: f.id, operator: 'eq', value: f.value as string }))
               })
             }}

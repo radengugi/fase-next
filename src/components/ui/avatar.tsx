@@ -30,7 +30,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
 
     return (
       <motion.div
-        ref={ref}
+        ref={ref as any}
         className={cn(
           "relative rounded-full bg-gradient-to-br from-neutral-800 to-neutral-700 flex items-center justify-center text-white font-medium overflow-hidden",
           sizes[size],
@@ -38,7 +38,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
         )}
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.2 }}
-        {...props}
+        {...(props as any)}
       >
         {src ? (
           <img

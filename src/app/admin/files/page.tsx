@@ -6,7 +6,7 @@ import { Search, Upload, File, Trash2, Download, MoreHorizontal, Grid, List } fr
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { Dropdown, DropdownContent, DropdownItem } from "@/components/ui/dropdown"
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { EmptyState } from "@/components/ui/empty-state"
 import { FileUploadModal } from "@/components/admin/files/file-upload-modal"
 import { useFiles, useDeleteFile } from "@/hooks/api/useFiles"
@@ -179,17 +179,18 @@ export default function FilesPage() {
       {/* Files Grid/List */}
       {filteredFiles.length === 0 ? (
         <EmptyState
-          icon={<File className="w-12 h-12" />}
           title="No files found"
           description={
             search
               ? "No files match your search criteria."
               : "Upload your first file to get started."
           }
-          action={search ? undefined : {
-            label: "Upload Files",
-            onClick: () => setShowUploadModal(true)
-          }}
+          action={search ? undefined : (
+            <Button onClick={() => setShowUploadModal(true)}>
+              <Upload className="w-4 h-4 mr-2" />
+              Upload Files
+            </Button>
+          )}
         />
       ) : (
         <div className={view === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" : "space-y-2"}>
@@ -205,23 +206,25 @@ export default function FilesPage() {
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between mb-4">
                       <div className="text-4xl">{getFileIcon(file.mime_type)}</div>
-                      <Dropdown>
-                        <button className="p-2 hover:bg-white/10 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger className="p-2 hover:bg-white/10 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
                           <MoreHorizontal className="w-4 h-4" />
-                        </button>
-                        <DropdownContent align="end">
-                          <DropdownItem onClick={() => handleDownload(file)}>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem onClick={() => handleDownload(file)}>
+                            <Download className="w-4 h-4 mr-2" />
                             Download
-                          </DropdownItem>
-                          <DropdownItem
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
                             onClick={() => handleDelete(file.id)}
                             className="text-red-500"
                             disabled={deleting}
                           >
+                            <Trash2 className="w-4 h-4 mr-2" />
                             Delete
-                          </DropdownItem>
-                        </DropdownContent>
-                      </Dropdown>
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </div>
 
                     <h3 className="font-medium text-white text-sm mb-1 truncate">{file.name}</h3>
@@ -247,23 +250,25 @@ export default function FilesPage() {
                   <div className="text-xs text-neutral-500">
                     {new Date(file.created_at).toLocaleDateString()}
                   </div>
-                  <Dropdown>
-                    <button className="p-2 hover:bg-white/10 rounded-lg transition-colors">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="p-2 hover:bg-white/10 rounded-lg transition-colors">
                       <MoreHorizontal className="w-4 h-4" />
-                    </button>
-                    <DropdownContent align="end">
-                      <DropdownItem onClick={() => handleDownload(file)}>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={() => handleDownload(file)}>
+                        <Download className="w-4 h-4 mr-2" />
                         Download
-                      </DropdownItem>
-                      <DropdownItem
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
                         onClick={() => handleDelete(file.id)}
                         className="text-red-500"
                         disabled={deleting}
                       >
+                        <Trash2 className="w-4 h-4 mr-2" />
                         Delete
-                      </DropdownItem>
-                    </DropdownContent>
-                  </Dropdown>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               )}
             </motion.div>

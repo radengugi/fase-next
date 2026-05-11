@@ -10,7 +10,7 @@ import { Select } from "@/components/ui/select"
 import { MultiSelect } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
-import type { Project, CreateProjectInput } from "@/types/project"
+import type { Project } from "@/types/project"
 import type { Client } from "@/types/client"
 
 interface ProjectFormProps {
@@ -43,20 +43,20 @@ export function ProjectForm({ project, onSuccess }: ProjectFormProps) {
     setError(null)
 
     const formData = new FormData(e.currentTarget)
-    const data: CreateProjectInput = {
+    const data = {
       name: formData.get("name") as string,
       client_id: formData.get("client_id") as string,
       service_type: formData.get("service_type") as string,
-      description: formData.get("description") as string || undefined,
-      deadline: formData.get("deadline") as string || undefined,
+      description: (formData.get("description") as string) || undefined,
+      deadline: (formData.get("deadline") as string) || undefined,
       priority: (formData.get("priority") as string) || undefined,
       status: (formData.get("status") as string) || undefined,
-      assignee_ids: formData.get("assignee_ids") as string as any
+      assignee_ids: undefined as string[] | undefined
     }
 
     const result = project
-      ? await updateProject({ ...data, id: project.id })
-      : await createProject(data)
+      ? await updateProject({ ...data, id: project.id } as any)
+      : await createProject(data as any)
 
     if (result.error) {
       setError(result.error)

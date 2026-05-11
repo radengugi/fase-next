@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle } from "lucide-react"
 import { cn } from "@/utils/cn"
 
-type ToastType = "success" | "error" | "info" | "warning"
+export type ToastType = "success" | "error" | "info" | "warning"
 
 export interface Toast {
   id: string

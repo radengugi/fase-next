@@ -20,7 +20,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
 
     return (
       <motion.div
-        ref={ref}
+        ref={ref as any}
         className={cn(
           "bg-neutral-800 animate-pulse",
           variantStyles[variant],
@@ -29,7 +29,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
         style={{ width, height }}
         animate={{ opacity: [0.4, 0.6, 0.4] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        {...props}
+        {...(props as any)}
       />
     )
   }

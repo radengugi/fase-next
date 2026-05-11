@@ -18,8 +18,8 @@ export class ClientApiService {
     const queryParams = new URLSearchParams()
 
     if (params.pagination) {
-      queryParams.append('page', params.pagination.page.toString())
-      queryParams.append('limit', params.pagination.limit.toString())
+      queryParams.append('page', (params.pagination.page ?? 1).toString())
+      queryParams.append('limit', (params.pagination.limit ?? 10).toString())
     }
 
     if (params.sort) {
@@ -86,8 +86,8 @@ export class ClientApiService {
     queryParams.append('search', query)
 
     if (params.pagination) {
-      queryParams.append('page', params.pagination.page.toString())
-      queryParams.append('limit', params.pagination.limit.toString())
+      queryParams.append('page', (params.pagination.page ?? 1).toString())
+      queryParams.append('limit', (params.pagination.limit ?? 10).toString())
     }
 
     const url = `${this.baseUrl}?${queryParams.toString()}`

@@ -21,7 +21,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table"
-import { Dropdown, DropdownContent, DropdownItem } from "@/components/ui/dropdown"
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import { Modal } from "@/components/ui/modal"
 import { InvoiceForm } from "@/components/admin/invoices/invoice-form"
 import { InvoiceDetail } from "@/components/admin/invoices/invoice-detail"
@@ -34,7 +34,7 @@ const statusColors: Record<string, "success" | "warning" | "danger" | "info"> = 
   pending: "warning",
   overdue: "danger",
   draft: "info",
-  cancelled: "default"
+  cancelled: "info"
 }
 
 export default function InvoicesPage() {
@@ -142,12 +142,12 @@ export default function InvoicesPage() {
     {
       id: "actions",
       cell: ({ row }) => (
-        <Dropdown>
-          <button className="p-2 hover:bg-white/10 rounded-lg transition-colors">
+        <DropdownMenu>
+          <DropdownMenuTrigger className="p-2 hover:bg-white/10 rounded-lg transition-colors">
             <MoreHorizontal className="w-4 h-4" />
-          </button>
-          <DropdownContent align="end">
-            <DropdownItem
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem
               onClick={() => {
                 setSelectedInvoice(row.original)
                 setIsEditing(false)
@@ -155,16 +155,16 @@ export default function InvoicesPage() {
               }}
             >
               View Details
-            </DropdownItem>
+            </DropdownMenuItem>
             {row.original.status !== 'paid' && (
-              <DropdownItem
+              <DropdownMenuItem
                 onClick={() => handleMarkAsPaid(row.original.id)}
                 disabled={markingPaid}
               >
                 Mark as Paid
-              </DropdownItem>
+              </DropdownMenuItem>
             )}
-            <DropdownItem
+            <DropdownMenuItem
               onClick={() => {
                 setSelectedInvoice(row.original)
                 setIsEditing(true)
@@ -172,16 +172,16 @@ export default function InvoicesPage() {
               }}
             >
               Edit
-            </DropdownItem>
-            <DropdownItem
+            </DropdownMenuItem>
+            <DropdownMenuItem
               onClick={() => handleDelete(row.original.id)}
               className="text-red-500"
               disabled={deleting}
             >
               Delete
-            </DropdownItem>
-          </DropdownContent>
-        </Dropdown>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       )
     }
   ]

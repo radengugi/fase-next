@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import type { InvoiceStatus } from '@/types/database.types'
 import { BaseRepository, type ApiResponse, type PaginatedResponse, type QueryParams } from './base.repository'
 
+export type { QueryParams } from './base.repository'
+
 export interface Invoice {
   id: string
   client_id: string
@@ -35,7 +37,9 @@ export interface CreateInvoiceInput {
   notes?: string | null
 }
 
-export interface UpdateInvoiceInput extends Partial<CreateInvoiceInput> {}
+export interface UpdateInvoiceInput extends Partial<CreateInvoiceInput> {
+  paid_date?: string | null
+}
 
 export class InvoiceRepository extends BaseRepository {
   async findAll(params: QueryParams = {}): Promise<PaginatedResponse<Invoice>> {
@@ -108,7 +112,7 @@ export class InvoiceRepository extends BaseRepository {
         }
       }
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return { data: null, error: error.message || 'Unknown error', pagination: { page: 1, limit: 10, total: 0, totalPages: 0 } }
     }
   }
 
@@ -123,7 +127,7 @@ export class InvoiceRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Invoice>(null, error)
     }
   }
 
@@ -141,7 +145,7 @@ export class InvoiceRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Invoice>(null, error)
     }
   }
 
@@ -157,7 +161,7 @@ export class InvoiceRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Invoice>(null, error)
     }
   }
 
@@ -173,7 +177,7 @@ export class InvoiceRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Invoice>(null, error)
     }
   }
 

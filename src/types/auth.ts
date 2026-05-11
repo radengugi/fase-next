@@ -6,9 +6,9 @@ export interface User {
   full_name: string | null
   role: UserRole
   avatar_url: string | null
-  department: string | null
-  skills: string[] | null
-  joined_date: string
+  department?: string | null
+  skills?: string[] | null
+  joined_date?: string
 }
 
 export interface AuthState {

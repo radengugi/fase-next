@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import type { ProjectStatus, ProjectPriority } from '@/types/database.types'
 import { BaseRepository, type ApiResponse, type PaginatedResponse, type QueryParams } from './base.repository'
 
+export type { QueryParams } from './base.repository'
+
 export interface Project {
   id: string
   client_id: string
@@ -104,7 +106,7 @@ export class ProjectRepository extends BaseRepository {
         }
       }
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return { data: null, error: error.message || 'Unknown error', pagination: { page: 1, limit: 10, total: 0, totalPages: 0 } }
     }
   }
 
@@ -119,7 +121,7 @@ export class ProjectRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Project>(null, error)
     }
   }
 
@@ -138,7 +140,7 @@ export class ProjectRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Project>(null, error)
     }
   }
 
@@ -154,7 +156,7 @@ export class ProjectRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Project>(null, error)
     }
   }
 
@@ -170,7 +172,7 @@ export class ProjectRepository extends BaseRepository {
 
       return this.handleResponse(data, error)
     } catch (error: any) {
-      return this.handleResponse(null, error)
+      return this.handleResponse<Project>(null, error)
     }
   }
 

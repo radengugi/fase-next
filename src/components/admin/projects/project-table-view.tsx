@@ -16,7 +16,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table"
-import { Dropdown } from "@/components/ui/dropdown"
+import { Dropdown, DropdownContent, DropdownItem } from "@/components/ui/dropdown"
 import { Drawer } from "@/components/ui/drawer"
 import { ProjectForm } from "./project-form"
 import { Calendar, Users, MoreHorizontal, Plus } from "lucide-react"
@@ -33,7 +33,7 @@ const statusColors: Record<string, "primary" | "success" | "warning" | "danger" 
   Maintenance: "primary"
 }
 
-const priorityColors: Record<string, "primary" | "success" | "warning" | "danger"> = {
+const priorityColors: Record<string, "primary" | "success" | "warning" | "danger" | "info"> = {
   Low: "primary",
   Medium: "info",
   High: "warning",

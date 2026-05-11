@@ -1,55 +1,80 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { createInvoice } from "@/services/invoice"
-import { getClients } from "@/services/client"
 import { Input } from "@/components/ui/input"
 import { Select } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Loader2 } from "lucide-react"
-import type { CreateInvoiceInput } from "@/types/invoice"
+import type { Invoice } from "@/server/repositories/invoice.repository"
 
 interface InvoiceFormProps {
+  invoice?: Invoice | null
   onSuccess?: () => void
 }
 
-export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
+export function InvoiceForm({ invoice, onSuccess }: InvoiceFormProps) {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [clients, setClients] = useState<any[]>([])
 
-  useState(() => {
+  useEffect(() => {
     async function loadClients() {
       const response = await fetch("/api/clients")
       const { data } = await response.json()
       setClients(data || [])
     }
     loadClients()
-  })
+  }, [])
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: { preventDefault: () => void; currentTarget: HTMLFormElement }) {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
 
     const formData = new FormData(e.currentTarget)
-    const data: CreateInvoiceInput = {
-      client_id: formData.get("client_id") as string,
-      project_id: formData.get("project_id") as string || undefined,
-      amount: Number(formData.get("amount")),
-      due_date: formData.get("due_date") as string,
-      notes: formData.get("notes") as string || undefined
-    }
 
-    const result = await createInvoice(data)
+    if (invoice) {
+      // Edit existing invoice
+      const response = await fetch(`/api/invoices/${invoice.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: Number(formData.get("amount")),
+          due_date: formData.get("due_date") as string,
+          notes: formData.get("notes") as string || undefined
+        })
+      })
 
-    if (result.error) {
-      setError(result.error)
-      setIsLoading(false)
-      return
+      const result = await response.json()
+
+      if (result.error) {
+        setError(result.error)
+        setIsLoading(false)
+        return
+      }
+    } else {
+      // Create new invoice
+      const response = await fetch("/api/invoices", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          client_id: formData.get("client_id") as string,
+          project_id: formData.get("project_id") as string || undefined,
+          amount: Number(formData.get("amount")),
+          due_date: formData.get("due_date") as string,
+          notes: formData.get("notes") as string || undefined
+        })
+      })
+
+      const result = await response.json()
+
+      if (result.error) {
+        setError(result.error)
+        setIsLoading(false)
+        return
+      }
     }
 
     setIsLoading(false)
@@ -60,13 +85,15 @@ export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
   return (
     <form onSubmit={onSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Select
-          name="client_id"
-          label="Client"
-          options={clients.map((c) => ({ value: c.id, label: c.company_name }))}
-          required
-          disabled={isLoading}
-        />
+        {!invoice && (
+          <Select
+            name="client_id"
+            label="Client"
+            options={clients.map((c) => ({ value: c.id, label: c.company_name }))}
+            required
+            disabled={isLoading}
+          />
+        )}
 
         <Input
           name="amount"
@@ -74,6 +101,7 @@ export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
           step="0.01"
           label="Amount"
           placeholder="0.00"
+          defaultValue={invoice?.amount ?? undefined}
           required
           disabled={isLoading}
         />
@@ -82,6 +110,7 @@ export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
           name="due_date"
           type="date"
           label="Due Date"
+          defaultValue={invoice?.due_date ?? undefined}
           required
           disabled={isLoading}
         />
@@ -90,6 +119,7 @@ export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
           name="project_id"
           label="Project (Optional)"
           placeholder="Project ID"
+          defaultValue={invoice?.project_id ?? undefined}
           disabled={isLoading}
         />
       </div>
@@ -99,6 +129,7 @@ export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
         label="Notes"
         placeholder="Additional notes..."
         rows={3}
+        defaultValue={invoice?.notes ?? undefined}
         disabled={isLoading}
       />
 
@@ -118,7 +149,7 @@ export function InvoiceForm({ onSuccess }: InvoiceFormProps) {
           Cancel
         </Button>
         <Button type="submit" isLoading={isLoading}>
-          Create Invoice
+          {invoice ? "Update Invoice" : "Create Invoice"}
         </Button>
       </div>
     </form>

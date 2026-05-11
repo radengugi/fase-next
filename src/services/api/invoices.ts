@@ -18,8 +18,8 @@ export class InvoiceApiService {
     const queryParams = new URLSearchParams()
 
     if (params.pagination) {
-      queryParams.append('page', params.pagination.page.toString())
-      queryParams.append('limit', params.pagination.limit.toString())
+      queryParams.append('page', (params.pagination.page ?? 1).toString())
+      queryParams.append('limit', (params.pagination.limit ?? 10).toString())
     }
 
     if (params.sort) {
@@ -30,9 +30,9 @@ export class InvoiceApiService {
     if (params.filters) {
       params.filters.forEach(filter => {
         if (filter.field === 'status') {
-          queryParams.append('status', filter.value)
+          queryParams.append('status', String(filter.value))
         } else if (filter.field === 'client_id') {
-          queryParams.append('client_id', filter.value)
+          queryParams.append('client_id', String(filter.value))
         }
       })
     }

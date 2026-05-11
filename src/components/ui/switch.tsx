@@ -31,7 +31,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
 
     return (
       <motion.button
-        ref={ref}
+        ref={ref as any}
         type="button"
         role="switch"
         aria-checked={checked}
@@ -47,7 +47,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
         )}
         whileHover={{ scale: disabled ? 1 : 1.05 }}
         whileTap={{ scale: disabled ? 1 : 0.95 }}
-        {...props}
+        {...(props as any)}
       >
         <motion.span
           className={cn(

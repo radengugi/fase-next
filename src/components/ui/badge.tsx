@@ -38,12 +38,12 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
   ({ className, variant, size, ...props }, ref) => {
     return (
       <motion.div
-        ref={ref}
+        ref={ref as any}
         className={cn(badgeVariants({ variant, size }), className)}
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.2 }}
-        {...props}
+        {...(props as any)}
       />
     )
   }

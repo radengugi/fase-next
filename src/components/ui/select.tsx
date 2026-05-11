@@ -24,7 +24,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         )}
         <div className="relative">
           <motion.select
-            ref={ref}
+            ref={ref as any}
             className={cn(
               "flex h-10 w-full appearance-none rounded-md border px-3 py-2 pr-10 text-sm",
               "bg-neutral-900/50 backdrop-blur-sm",
@@ -37,7 +37,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             whileFocus={{ scale: 1.01 }}
-            {...props}
+            {...(props as any)}
           >
             {options.map((option) => (
               <option key={option.value} value={option.value} disabled={option.disabled}>

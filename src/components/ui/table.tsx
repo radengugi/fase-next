@@ -38,12 +38,12 @@ TableHeader.displayName = "TableHeader"
 export const TableBody = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
   ({ className, ...props }, ref) => (
     <motion.tbody
-      ref={ref}
+      ref={ref as any}
       className={cn("[&_tr:last-child]:border-0", className)}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      {...props}
+      {...(props as any)}
     />
   )
 )
@@ -61,7 +61,7 @@ TableFooter.displayName = "TableFooter"
 export const TableRow = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTableRowElement>>(
   ({ className, ...props }, ref) => (
     <motion.tr
-      ref={ref}
+      ref={ref as any}
       className={cn(
         "border-b border-neutral-800 transition-colors hover:bg-white/5 data-[state=selected]:bg-white/10",
         className
@@ -69,7 +69,7 @@ export const TableRow = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTable
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.2 }}
-      {...props}
+      {...(props as any)}
     />
   )
 )

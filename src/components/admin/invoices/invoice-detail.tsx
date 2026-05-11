@@ -2,22 +2,32 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Download, FileText, DollarSign, Calendar, Building2, Mail } from "lucide-react"
-import type { Invoice } from "@/types/invoice"
+import { Download, FileText, Calendar, Building2, Mail } from "lucide-react"
+import type { Invoice } from "@/server/repositories/invoice.repository"
 
 interface InvoiceDetailProps {
-  invoice: Invoice
+  invoice?: Invoice | null
+  onEdit?: () => void
   onClose?: () => void
 }
 
-const statusColors: Record<string, "success" | "warning" | "danger" | "default"> = {
-  Paid: "success",
-  Pending: "warning",
-  Overdue: "danger",
-  Cancelled: "default"
+const statusColors: Record<string, "success" | "warning" | "danger" | "info"> = {
+  paid: "success",
+  pending: "warning",
+  overdue: "danger",
+  draft: "info",
+  cancelled: "info"
 }
 
-export function InvoiceDetail({ invoice }: InvoiceDetailProps) {
+export function InvoiceDetail({ invoice, onEdit, onClose }: InvoiceDetailProps) {
+  if (!invoice) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <p className="text-neutral-500">No invoice selected</p>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -29,7 +39,7 @@ export function InvoiceDetail({ invoice }: InvoiceDetailProps) {
             </div>
             <h2 className="text-2xl font-bold text-white">{invoice.invoice_number}</h2>
           </div>
-          <p className="text-neutral-500">{invoice.project?.name || "General Invoice"}</p>
+          <p className="text-neutral-500">{invoice.projects?.name || "General Invoice"}</p>
         </div>
         <Badge variant={statusColors[invoice.status]}>{invoice.status}</Badge>
       </div>
@@ -53,7 +63,7 @@ export function InvoiceDetail({ invoice }: InvoiceDetailProps) {
             </div>
             <div>
               <p className="text-xs text-neutral-500">Client</p>
-              <p className="text-sm text-white">{invoice.client?.company_name}</p>
+              <p className="text-sm text-white">{invoice.clients?.company_name}</p>
             </div>
           </div>
 
@@ -73,19 +83,21 @@ export function InvoiceDetail({ invoice }: InvoiceDetailProps) {
             </div>
             <div>
               <p className="text-xs text-neutral-500">Issued Date</p>
-              <p className="text-sm text-white">{new Date(invoice.issued_date).toLocaleDateString()}</p>
+              <p className="text-sm text-white">{new Date(invoice.issue_date).toLocaleDateString()}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-4 rounded-lg bg-neutral-900/50 border border-neutral-800">
-            <div className="p-2 rounded-lg bg-neutral-800">
-              <Mail className="w-5 h-5 text-neutral-400" />
+          {invoice.paid_date && (
+            <div className="flex items-center gap-3 p-4 rounded-lg bg-neutral-900/50 border border-neutral-800">
+              <div className="p-2 rounded-lg bg-neutral-800">
+                <Calendar className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <p className="text-xs text-neutral-500">Paid Date</p>
+                <p className="text-sm text-white">{new Date(invoice.paid_date).toLocaleDateString()}</p>
+              </div>
             </div>
-            <div>
-              <p className="text-xs text-neutral-500">Client Email</p>
-              <p className="text-sm text-white">{invoice.client?.email}</p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
 

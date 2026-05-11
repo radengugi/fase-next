@@ -18,7 +18,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         <motion.input
-          ref={ref}
+          ref={ref as any}
           type={type}
           className={`
             flex h-10 w-full rounded-md border px-3 py-2 text-sm
@@ -31,7 +31,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ${className || ""}
           `}
           whileFocus={{ scale: 1.01 }}
-          {...props}
+          {...(props as any)}
         />
         {error && (
           <motion.p
@@ -59,7 +59,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, InputProps & { rows?: nu
           </label>
         )}
         <motion.textarea
-          ref={ref}
+          ref={ref as any}
           rows={rows}
           className={`
             flex w-full rounded-md border px-3 py-2 text-sm
@@ -72,7 +72,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, InputProps & { rows?: nu
             ${className || ""}
           `}
           whileFocus={{ scale: 1.01 }}
-          {...props}
+          {...(props as any)}
         />
         {error && (
           <motion.p

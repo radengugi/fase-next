@@ -3,10 +3,11 @@ import { invoiceService } from '@/server/services/invoice.service'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const result = await invoiceService.getInvoiceById(params.id)
+    const { id } = await params
+    const result = await invoiceService.getInvoiceById(id)
 
     if (result.error && !result.data) {
       return NextResponse.json(result, { status: 404 })
@@ -23,12 +24,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
 
-    const result = await invoiceService.updateInvoice(params.id, body)
+    const result = await invoiceService.updateInvoice(id, body)
 
     if (result.error && !result.data) {
       return NextResponse.json(result, { status: 404 })
@@ -45,10 +47,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const result = await invoiceService.deleteInvoice(params.id)
+    const { id } = await params
+    const result = await invoiceService.deleteInvoice(id)
 
     if (result.error && !result.data) {
       return NextResponse.json(result, { status: 404 })
@@ -65,14 +68,15 @@ export async function DELETE(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
 
     // Handle specific actions like marking as paid
     if (body.action === 'mark_as_paid') {
-      const result = await invoiceService.markAsPaid(params.id)
+      const result = await invoiceService.markAsPaid(id)
       return NextResponse.json(result)
     }
 
