@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollY } from '@/hooks/useScrollY';
 import { useTheme } from '@/hooks/useTheme';
 import { navItems } from '@/lib/data';
+import Image from 'next/image';
 
 export default function Navbar() {
   const scrollY = useScrollY();
@@ -57,9 +58,13 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center text-white font-bold text-sm">
-                F
-              </div>
+              <Image
+                src="/blue-fase.png"
+                width={32}
+                height={32}
+                alt="FASE Logo"
+                className="w-8 h-8 rounded-lg"
+              />
               <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
             </div>
             <span className="text-xl font-bold tracking-tight dark:text-white text-[#0F172A]">
