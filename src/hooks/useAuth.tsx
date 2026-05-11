@@ -19,10 +19,16 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthProvider({ children }: { children: React.ReactNode }): JSX.Element {
   const [user, setUser] = useState<UserProfile | null>(null)
   const [loading, setLoading] = useState(true)
-  const supabase = createClient()
 
-  // Memoize fetchUserProfile to prevent re-creation
+  const hasSupabaseConfig = !!(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  )
+
+  const supabase = hasSupabaseConfig ? createClient() : null as any
+
   const fetchUserProfile = useCallback(async (authUser: User) => {
+    if (!supabase) return
     const { data, error } = await supabase
       .from("profiles")
       .select("*")
@@ -41,10 +47,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }): JSX.E
   }, [supabase])
 
   useEffect(() => {
+    if (!hasSupabaseConfig || !supabase) {
+      setLoading(false)
+      return
+    }
+
     let mounted = true
 
     // Get initial session
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }: any) => {
       if (mounted && session?.user) {
         await fetchUserProfile(session.user)
       }
@@ -52,7 +63,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }): JSX.E
     })
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event: any, session: any) => {
       if (mounted) {
         if (session?.user) {
           await fetchUserProfile(session.user)
@@ -70,30 +81,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }): JSX.E
   }, [supabase, fetchUserProfile])
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    if (!supabase) throw new Error('Supabase not configured')
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) throw error
   }
 
   const signUp = async (email: string, password: string, fullName: string) => {
-    const { data, error } = await supabase.auth.signUp({
+    if (!supabase) throw new Error('Supabase not configured')
+    const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: {
-        data: {
-          full_name: fullName,
-        },
-      },
+      options: { data: { full_name: fullName } },
     })
-
     if (error) throw error
-
-    // Profile will be created by trigger
   }
 
   const signOut = async () => {
+    if (!supabase) return
     await supabase.auth.signOut()
   }
 
