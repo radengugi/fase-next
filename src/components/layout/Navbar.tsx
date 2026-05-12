@@ -111,20 +111,20 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden w-9 h-9 rounded-xl dark:bg-white/5 bg-black/5 flex flex-col items-center justify-center gap-1.5"
+              className="lg:hidden w-9 h-9 rounded-xl bg-white/10 flex flex-col items-center justify-center gap-1.5 hover:bg-white/20 transition-colors"
               aria-label="Toggle menu"
             >
               <motion.span
                 animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 6 : 0 }}
-                className="w-5 h-px dark:bg-white bg-[#0F172A] block"
+                className="w-5 h-px bg-white block"
               />
               <motion.span
                 animate={{ opacity: mobileOpen ? 0 : 1 }}
-                className="w-5 h-px dark:bg-white bg-[#0F172A] block"
+                className="w-5 h-px bg-white block"
               />
               <motion.span
                 animate={{ rotate: mobileOpen ? -45 : 0, y: mobileOpen ? -6 : 0 }}
-                className="w-5 h-px dark:bg-white bg-[#0F172A] block"
+                className="w-5 h-px bg-white block"
               />
             </button>
           </div>
@@ -139,7 +139,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 dark:bg-[#04045E] bg-white flex flex-col pt-24 px-6 pb-10"
+            className="fixed inset-0 z-40 bg-[#04045E] flex flex-col pt-24 px-6 pb-10"
           >
             <nav className="flex flex-col gap-1 flex-1">
               {navItems.map((item, i) => (
@@ -152,10 +152,10 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between py-4 border-b dark:border-white/10 border-black/10 dark:text-white text-[#0F172A] text-xl font-medium hover:text-[#B9fA3C] transition-colors"
+                    className="flex items-center justify-between py-4 border-b border-white/10 text-white text-xl font-medium hover:text-[#B9fA3C] transition-colors"
                   >
                     {item.label}
-                    <svg className="w-4 h-4 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </Link>

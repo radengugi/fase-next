@@ -64,7 +64,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#B9fA3C]/10 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <Link href="/portfolio" className="inline-flex items-center gap-2 text-white text-sm mb-8 hover:text-[#B9fA3C] transition-colors">
+          <Link href="/portfolio" className="inline-flex items-center gap-2 text-white/50 text-sm mb-8 hover:text-[#B9fA3C] transition-colors">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
