@@ -16,7 +16,7 @@ export default function StatsSection({ stats: cmsStats }: StatsSectionProps) {
     : staticStats;
 
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden bg-[#04045E]">
+    <section ref={ref} className="pt-24 relative overflow-hidden bg-[#04045E]">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
           {stats.map((stat, i) => (
