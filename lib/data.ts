@@ -6,7 +6,7 @@ export const services: Service[] = [
     icon: '◈',
     title: 'Branding Strategy',
     description: 'Build a distinctive brand identity that resonates globally and drives recognition across markets.',
-    color: '#6366F1',
+    color: '#B9fA3C',
   },
   {
     id: 'social-media',
@@ -27,7 +27,7 @@ export const services: Service[] = [
     icon: '◉',
     title: 'Mobile App Development',
     description: 'Native and cross-platform applications that deliver seamless experiences across all devices.',
-    color: '#6366F1',
+    color: '#B9fA3C',
   },
   {
     id: 'ui-ux',
@@ -48,7 +48,7 @@ export const services: Service[] = [
     icon: '◒',
     title: 'Digital Marketing',
     description: 'Full-funnel marketing campaigns that drive measurable growth and maximize ROI.',
-    color: '#6366F1',
+    color: '#B9fA3C',
   },
   {
     id: 'content',
@@ -69,7 +69,7 @@ export const services: Service[] = [
     icon: '◕',
     title: 'Digital Transformation',
     description: 'End-to-end digitalization strategies that modernize operations and accelerate business growth.',
-    color: '#6366F1',
+    color: '#B9fA3C',
   },
 ];
 

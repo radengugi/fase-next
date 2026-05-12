@@ -24,7 +24,7 @@ export default function AnalyticsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="w-8 h-8 border-2 border-[#6366F1] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-[#B9fA3C] border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
@@ -163,7 +163,7 @@ export default function AnalyticsPage() {
                 </div>
                 <div className="h-2 bg-neutral-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-[#6366F1] to-[#8B5CF6]"
+                    className="h-full bg-gradient-to-r from-[#B9fA3C] to-[#8B5CF6]"
                     style={{ width: '75%' }}
                   />
                 </div>

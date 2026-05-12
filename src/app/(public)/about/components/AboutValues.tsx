@@ -14,9 +14,9 @@ export default function AboutValues() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#6366F1]/10 bg-[#6366F1]/8 mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-4"
           >
-            <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">Our Values</span>
+            <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Our Values</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function AboutValues() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="flex gap-6 p-8 rounded-2xl dark:bg-white/[0.03] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/30 transition-colors duration-300"
+              className="flex gap-6 p-8 rounded-2xl dark:bg-white/[0.03] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-colors duration-300"
             >
               <span className="text-3xl shrink-0 mt-1">{value.icon}</span>
               <div>

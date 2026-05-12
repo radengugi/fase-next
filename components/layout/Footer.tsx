@@ -27,7 +27,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2 group mb-6">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center text-white font-bold text-sm">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white font-bold text-sm">
                 F
               </div>
               <span className="text-xl font-bold tracking-tight dark:text-white text-[#0F172A]">FASE</span>
@@ -42,11 +42,11 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="your@email.com"
-                  className="flex-1 px-4 py-2.5 rounded-xl dark:bg-white/5 bg-black/5 dark:text-white text-[#0F172A] text-sm placeholder:dark:text-white/30 placeholder:text-black/30 border dark:border-white/10 border-black/10 focus:outline-none focus:border-[#6366F1] transition-colors"
+                  className="flex-1 px-4 py-2.5 rounded-xl dark:bg-white/5 bg-black/5 dark:text-white text-[#0F172A] text-sm placeholder:dark:text-white/30 placeholder:text-black/30 border dark:border-white/10 border-black/10 focus:outline-none focus:border-[#B9fA3C] transition-colors"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2.5 rounded-xl bg-[#6366F1] text-white text-sm font-medium hover:bg-[#5254CC] transition-colors"
+                  className="px-4 py-2.5 rounded-xl bg-[#B9fA3C] text-[#04045E] text-sm font-medium transition-colors"
                 >
                   Subscribe
                 </button>
@@ -63,7 +63,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="dark:text-white/50 text-[#0F172A]/60 text-sm hover:text-[#6366F1] dark:hover:text-[#6366F1] transition-colors duration-200"
+                      className="dark:text-white/50 text-[#0F172A]/60 text-sm hover:text-[#B9fA3C] dark:hover:text-[#B9fA3C] transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -80,9 +80,9 @@ export default function Footer() {
             © 2026 FASE Digital Agency. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="dark:text-white/30 text-[#0F172A]/40 text-sm hover:text-[#6366F1] transition-colors">Privacy</Link>
-            <Link href="#" className="dark:text-white/30 text-[#0F172A]/40 text-sm hover:text-[#6366F1] transition-colors">Terms</Link>
-            <Link href="#" className="dark:text-white/30 text-[#0F172A]/40 text-sm hover:text-[#6366F1] transition-colors">Cookies</Link>
+            <Link href="#" className="dark:text-white/30 text-[#0F172A]/40 text-sm hover:text-[#B9fA3C] transition-colors">Privacy</Link>
+            <Link href="#" className="dark:text-white/30 text-[#0F172A]/40 text-sm hover:text-[#B9fA3C] transition-colors">Terms</Link>
+            <Link href="#" className="dark:text-white/30 text-[#0F172A]/40 text-sm hover:text-[#B9fA3C] transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

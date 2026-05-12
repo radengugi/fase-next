@@ -23,7 +23,7 @@ const ContactIcon = ({ iconType }: { iconType: 'email' | 'location' | 'time' }) 
   };
 
   return (
-    <svg className="w-5 h-5 text-[#6366F1]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <svg className="w-5 h-5 text-[#B9fA3C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
       {icons[iconType]}
     </svg>
   );
@@ -49,8 +49,8 @@ export default function ContactPage() {
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 mesh-gradient" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#6366F1]/10 bg-[#6366F1]/8 mb-6">
-            <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">Get in Touch</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-6">
+            <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Get in Touch</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold dark:text-white text-[#0F172A] leading-tight mb-6">
             Let&rsquo;s Start a <span className="gradient-text">Conversation</span>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                 <h3 className="text-sm font-semibold dark:text-white text-[#0F172A] mb-4">Follow Us</h3>
                 <div className="flex flex-col gap-2">
                   {socials.map(s => (
-                    <a key={s.label} href={s.href} className="text-sm dark:text-white/50 text-black/60 hover:text-[#6366F1] transition-colors">{s.label}</a>
+                    <a key={s.label} href={s.href} className="text-sm dark:text-white/50 text-black/60 hover:text-[#B9fA3C] transition-colors">{s.label}</a>
                   ))}
                 </div>
               </div>

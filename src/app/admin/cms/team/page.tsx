@@ -97,7 +97,7 @@ export default function CmsTeamPage() {
       addLabel="Add Member"
       renderCard={(item, onEdit, onDel) => (
         <div className="flex items-center gap-4 p-4 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center text-white font-medium text-sm flex-shrink-0">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white font-medium text-sm flex-shrink-0">
             {item.name.substring(0, 2).toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">

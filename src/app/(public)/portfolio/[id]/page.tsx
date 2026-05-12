@@ -63,16 +63,16 @@ export default async function ProjectDetailPage({ params }: Props) {
       {/* Hero */}
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 mesh-gradient" />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#B9fA3C]/10 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <Link href="/portfolio" className="inline-flex items-center gap-2 dark:text-white/50 text-black/50 text-sm mb-8 hover:text-[#6366F1] transition-colors">
+          <Link href="/portfolio" className="inline-flex items-center gap-2 dark:text-white/50 text-black/50 text-sm mb-8 hover:text-[#B9fA3C] transition-colors">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Back to Portfolio
           </Link>
           <div className="flex flex-wrap gap-2 mb-6">
-            <span className="px-3 py-1 rounded-lg text-xs font-semibold bg-[#6366F1] text-white">{project.category}</span>
+            <span className="px-3 py-1 rounded-lg text-xs font-semibold bg-[#B9fA3C] text-[#04045E]">{project.category}</span>
             <span className="px-3 py-1 rounded-lg text-xs font-semibold dark:bg-white/10 bg-black/10 dark:text-white text-black">{project.year}</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold dark:text-white text-[#0F172A] mb-6 leading-tight">{project.title}</h1>
@@ -93,7 +93,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               />
             </div>
           ) : (
-            <div className="rounded-3xl overflow-hidden h-[400px] md:h-[600px] bg-gradient-to-br from-[#6366F1]/20 via-[#8B5CF6]/10 to-[#0F172A]/80 flex items-center justify-center">
+            <div className="rounded-3xl overflow-hidden h-[400px] md:h-[600px] bg-gradient-to-br from-[#B9fA3C]/20 via-[#8B5CF6]/10 to-[#0F172A]/80 flex items-center justify-center">
               <span className="text-[200px] font-black opacity-5 dark:text-white text-[#0F172A]">{project.title.charAt(0)}</span>
             </div>
           )}
@@ -151,7 +151,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               {others.map(p => {
                 const otherImageUrl = getImageUrl(p.image_url, p.updated_at);
                 return (
-                  <Link key={p.id} href={`/portfolio/${p.id}`} className="group block rounded-2xl overflow-hidden dark:bg-[#080D1A] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/30 transition-all duration-300 hover:-translate-y-0.5">
+                  <Link key={p.id} href={`/portfolio/${p.id}`} className="group block rounded-2xl overflow-hidden dark:bg-[#080D1A] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-0.5">
                     {otherImageUrl ? (
                       <div className="h-36 relative">
                         <Image
@@ -162,13 +162,13 @@ export default async function ProjectDetailPage({ params }: Props) {
                         />
                       </div>
                     ) : (
-                      <div className="h-36 bg-gradient-to-br from-[#6366F1]/15 to-[#8B5CF6]/8 flex items-center justify-center">
+                      <div className="h-36 bg-gradient-to-br from-[#B9fA3C]/15 to-[#8B5CF6]/8 flex items-center justify-center">
                         <span className="text-4xl font-black opacity-10 dark:text-white text-black">{p.title.charAt(0)}</span>
                       </div>
                     )}
                     <div className="p-5">
-                      <p className="text-xs text-[#6366F1] font-medium mb-1">{p.category}</p>
-                      <h3 className="font-bold dark:text-white text-[#0F172A] group-hover:text-[#6366F1] transition-colors">{p.title}</h3>
+                      <p className="text-xs text-[#B9fA3C] font-medium mb-1">{p.category}</p>
+                      <h3 className="font-bold dark:text-white text-[#0F172A] group-hover:text-[#B9fA3C] transition-colors">{p.title}</h3>
                     </div>
                   </Link>
                 );

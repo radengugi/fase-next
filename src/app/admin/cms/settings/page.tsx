@@ -60,7 +60,7 @@ export default function CmsSettingsPage() {
   if (loading) {
     return (
       <div className="flex justify-center py-12">
-        <div className="w-8 h-8 border-2 border-[#6366F1] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-[#B9fA3C] border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }

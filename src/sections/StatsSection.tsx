@@ -19,9 +19,9 @@ export default function StatsSection({ stats: cmsStats }: StatsSectionProps) {
     <section ref={ref} className="py-24 relative overflow-hidden dark:bg-[#0F172A] bg-white">
       {/* BG */}
       <div className="absolute inset-0">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#6366F1]/30 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#6366F1]/30 to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#6366F1]/5 rounded-full blur-[100px]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#B9fA3C]/30 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#B9fA3C]/30 to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#B9fA3C]/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

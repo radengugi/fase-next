@@ -11,7 +11,7 @@
 }
 
 .dark {
-  --background: #0F172A;
+  --background: #40405e;
   --foreground: #F8FAFC;
 }
 
@@ -55,15 +55,12 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #6366F1;
+  background: #b9fa3c;
   border-radius: 2px;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A78BFA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #b9fa3c;
 }
 
 .glass {

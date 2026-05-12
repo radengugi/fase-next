@@ -36,10 +36,10 @@ export default function LoadingScreen() {
         className="flex flex-col items-center gap-8"
       >
         <div className="relative">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center text-white text-2xl font-bold shadow-2xl shadow-[#6366F1]/40">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white text-2xl font-bold shadow-2xl shadow-[#B9fA3C]/40">
             F
           </div>
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] blur-2xl opacity-40 animate-pulse" />
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] blur-2xl opacity-40 animate-pulse" />
         </div>
 
         <div className="text-center">
@@ -49,7 +49,7 @@ export default function LoadingScreen() {
 
         <div className="w-48 h-px dark:bg-white/10 bg-black/10 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-[#6366F1] to-[#A78BFA] rounded-full"
+            className="h-full bg-gradient-to-r from-[#B9fA3C] to-[#A78BFA] rounded-full"
             style={{ width: `${Math.min(progress, 100)}%` }}
             transition={{ ease: 'linear' }}
           />

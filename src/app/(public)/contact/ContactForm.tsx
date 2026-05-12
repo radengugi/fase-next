@@ -19,7 +19,7 @@ export default function ContactForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="flex flex-col items-center justify-center py-20 text-center"
       >
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center mb-6 shadow-2xl shadow-[#6366F1]/30">
+        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center mb-6 shadow-2xl shadow-[#B9fA3C]/30">
           <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
@@ -30,7 +30,7 @@ export default function ContactForm() {
     );
   }
 
-  const inputClass = "w-full px-4 py-3 rounded-xl dark:bg-white/5 bg-[#F8FAFC] dark:text-white text-[#0F172A] text-sm placeholder:dark:text-white/30 placeholder:text-black/30 border dark:border-white/10 border-black/10 focus:outline-none focus:border-[#6366F1] transition-colors";
+  const inputClass = "w-full px-4 py-3 rounded-xl dark:bg-white/5 bg-[#F8FAFC] dark:text-white text-[#0F172A] text-sm placeholder:dark:text-white/30 placeholder:text-black/30 border dark:border-white/10 border-black/10 focus:outline-none focus:border-[#B9fA3C] transition-colors";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -88,7 +88,7 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="w-full py-4 rounded-xl bg-[#6366F1] text-white font-semibold hover:bg-[#5254CC] hover:shadow-xl hover:shadow-[#6366F1]/25 transition-all duration-200 hover:-translate-y-0.5"
+        className="w-full py-4 rounded-xl bg-[#B9fA3C] text-[#04045E] font-semibold hover:shadow-xl hover:shadow-[#B9fA3C]/25 transition-all duration-200 hover:-translate-y-0.5"
       >
         Send Message
       </button>

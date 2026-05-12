@@ -56,7 +56,7 @@ export default function WhyUsSection({ values: cmsValues }: WhyUsSectionProps) {
 
   return (
     <section ref={ref} className="py-32 dark:bg-[#080D1A] bg-[#F8FAFC] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#6366F1]/5 rounded-full blur-[120px]" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#B9fA3C]/5 rounded-full blur-[120px]" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -66,9 +66,9 @@ export default function WhyUsSection({ values: cmsValues }: WhyUsSectionProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#6366F1]/10 bg-[#6366F1]/8 mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-4"
             >
-              <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">Why FASE</span>
+              <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Why FASE</span>
             </motion.div>
 
             <motion.h2
@@ -100,7 +100,7 @@ export default function WhyUsSection({ values: cmsValues }: WhyUsSectionProps) {
                 {[...Array(4)].map((_, i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 rounded-full border-2 dark:border-[#080D1A] border-[#F8FAFC] bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center text-white text-xs font-bold"
+                    className="w-10 h-10 rounded-full border-2 dark:border-[#080D1A] border-[#F8FAFC] bg-[#B9fA3C] flex items-center justify-center text-[#04045E] text-xs font-bold"
                   >
                     {['A', 'S', 'P', 'L'][i]}
                   </div>
@@ -121,7 +121,7 @@ export default function WhyUsSection({ values: cmsValues }: WhyUsSectionProps) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.07 }}
-                className="group p-5 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#6366F1]/10"
+                className="group p-5 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#B9fA3C]/10"
               >
                 <span className="text-2xl mb-3 block">{item.icon}</span>
                 <h3 className="font-semibold dark:text-white text-[#0F172A] text-sm mb-1.5">{item.title}</h3>

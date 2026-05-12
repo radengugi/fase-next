@@ -48,8 +48,8 @@ export default function AboutStory({ data }: AboutStoryProps) {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#6366F1]/10 bg-[#6366F1]/8 mb-6">
-              <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">{about.story_badge || 'Our Story'}</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-6">
+              <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">{about.story_badge || 'Our Story'}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold dark:text-white text-[#0F172A] leading-tight mb-6">
               {about.story_title}

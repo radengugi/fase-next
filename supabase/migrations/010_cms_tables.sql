@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS cms_services (
   icon text NOT NULL DEFAULT '◈',
   title text NOT NULL,
   description text,
-  color text DEFAULT '#6366F1',
+  color text DEFAULT '#B9fA3C',
   is_active boolean DEFAULT true,
   sort_order integer DEFAULT 0,
   created_at timestamptz DEFAULT now(),

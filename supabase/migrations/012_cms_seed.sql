@@ -22,16 +22,16 @@ ON CONFLICT DO NOTHING;
 
 -- Services
 INSERT INTO cms_services (slug, icon, title, description, color, sort_order) VALUES
-  ('branding', '◈', 'Branding Strategy', 'Build a distinctive brand identity that resonates globally and drives recognition across markets.', '#6366F1', 0),
+  ('branding', '◈', 'Branding Strategy', 'Build a distinctive brand identity that resonates globally and drives recognition across markets.', '#B9fA3C', 0),
   ('social-media', '◎', 'Social Media Management', 'Strategic social presence that builds community, drives engagement, and amplifies your brand.', '#8B5CF6', 1),
   ('web-dev', '⬡', 'Website Development', 'Premium, high-performance websites built for scale, conversion, and exceptional user experience.', '#A78BFA', 2),
-  ('mobile-dev', '◉', 'Mobile App Development', 'Native and cross-platform applications that deliver seamless experiences across all devices.', '#6366F1', 3),
+  ('mobile-dev', '◉', 'Mobile App Development', 'Native and cross-platform applications that deliver seamless experiences across all devices.', '#B9fA3C', 3),
   ('ui-ux', '◐', 'UI/UX Design', 'Human-centered design solutions that balance aesthetics with function to delight users.', '#8B5CF6', 4),
   ('seo', '◑', 'SEO Optimization', 'Data-driven search strategies that increase organic visibility and qualified traffic.', '#A78BFA', 5),
-  ('digital-marketing', '◒', 'Digital Marketing', 'Full-funnel marketing campaigns that drive measurable growth and maximize ROI.', '#6366F1', 6),
+  ('digital-marketing', '◒', 'Digital Marketing', 'Full-funnel marketing campaigns that drive measurable growth and maximize ROI.', '#B9fA3C', 6),
   ('content', '◓', 'Content Production', 'Premium video, photo, and written content that captivates audiences and drives action.', '#8B5CF6', 7),
   ('creative-campaign', '◔', 'Creative Campaign', 'Breakthrough campaigns that capture attention, spark conversation, and build lasting brand equity.', '#A78BFA', 8),
-  ('digital-transformation', '◕', 'Digital Transformation', 'End-to-end digitalization strategies that modernize operations and accelerate business growth.', '#6366F1', 9)
+  ('digital-transformation', '◕', 'Digital Transformation', 'End-to-end digitalization strategies that modernize operations and accelerate business growth.', '#B9fA3C', 9)
 ON CONFLICT (slug) DO NOTHING;
 
 -- Portfolio

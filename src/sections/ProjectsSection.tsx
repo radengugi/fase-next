@@ -39,9 +39,9 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#6366F1]/10 bg-[#6366F1]/8 mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-4"
             >
-              <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">Our Work</span>
+              <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Our Work</span>
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -57,7 +57,7 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link href="/portfolio" className="text-sm text-[#6366F1] font-semibold flex items-center gap-2 hover:gap-3 transition-all duration-200">
+            <Link href="/portfolio" className="text-sm text-[#B9fA3C] font-semibold flex items-center gap-2 hover:gap-3 transition-all duration-200">
               View All Projects
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -79,7 +79,7 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
               >
                 <Link
                   href={`/portfolio/${project.id}`}
-                  className="group block rounded-2xl overflow-hidden dark:bg-[#111827] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#6366F1]/10"
+                  className="group block rounded-2xl overflow-hidden dark:bg-[#111827] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#B9fA3C]/10"
                 >
                   {/* Project Image */}
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -90,7 +90,7 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-[#B9fA3C]/20 to-[#8B5CF6]/10 flex items-center justify-center">
                         <span className="text-[60px] font-black opacity-5 dark:text-white text-black">{project.title.charAt(0)}</span>
                       </div>
                     )}
@@ -110,7 +110,7 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
                   {/* Project Info */}
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="text-xs font-medium text-[#6366F1]">{project.category}</span>
+                      <span className="text-xs font-medium text-[#B9fA3C]">{project.category}</span>
                       {project.year && (
                         <>
                           <span className="text-neutral-300">·</span>
@@ -118,7 +118,7 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
                         </>
                       )}
                     </div>
-                    <h3 className="font-bold dark:text-white text-[#0F172A] text-lg mb-2 group-hover:text-[#6366F1] transition-colors">{project.title}</h3>
+                    <h3 className="font-bold dark:text-white text-[#0F172A] text-lg mb-2 group-hover:text-[#B9fA3C] transition-colors">{project.title}</h3>
                     {project.description && (
                       <p className="dark:text-white/50 text-black/60 text-sm mb-4 line-clamp-2">{project.description}</p>
                     )}

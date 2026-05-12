@@ -65,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="antialiased dark:bg-[#0F172A] bg-white min-h-screen">
+      <body className="antialiased dark:bg-[#40405e] bg-white min-h-screen">
         <AuthProvider>
           <ToastProvider>
             <main>{children}</main>

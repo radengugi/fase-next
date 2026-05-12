@@ -96,7 +96,7 @@ export default function HeroSection({ data: cmsHero, trustedBrands: cmsBrands }:
           animate="show"
           className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass border dark:border-white/10 border-black/10 mb-6 sm:mb-8"
         >
-          <span className="w-2 h-2 rounded-full bg-[#6366F1] animate-pulse flex-shrink-0" />
+          <span className="w-2 h-2 rounded-full bg-[#B9fA3C] animate-pulse flex-shrink-0" />
           <span className="text-xs sm:text-sm dark:text-white/70 text-[#0F172A]/70 font-medium">
             Award-Winning Digital Agency
           </span>
@@ -141,7 +141,7 @@ export default function HeroSection({ data: cmsHero, trustedBrands: cmsBrands }:
         >
           <Link
             href={hero.cta_primary_href}
-            className="group relative flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-2xl bg-[#6366F1] text-white text-sm sm:text-base font-semibold overflow-hidden hover:shadow-2xl hover:shadow-[#6366F1]/30 transition-all duration-300 hover:-translate-y-0.5"
+            className="group relative flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-2xl bg-[#B9fA3C] text-[#04045E] text-sm sm:text-base font-semibold overflow-hidden hover:shadow-2xl hover:shadow-[#6366F1]/30 transition-all duration-300 hover:-translate-y-0.5"
           >
             <span className="relative z-10">{hero.cta_primary_label}</span>
             <svg className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

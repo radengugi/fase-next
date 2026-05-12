@@ -33,10 +33,10 @@ export default function CmsDashboardPage() {
             >
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-lg bg-neutral-800 group-hover:bg-neutral-700 transition-colors">
-                  <Icon className="w-5 h-5 text-[#6366F1]" />
+                  <Icon className="w-5 h-5 text-[#B9fA3C]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-white group-hover:text-[#6366F1] transition-colors">{section.label}</p>
+                  <p className="font-semibold text-white group-hover:text-[#B9fA3C] transition-colors">{section.label}</p>
                   <p className="text-sm text-neutral-500 mt-0.5">{section.description}</p>
                 </div>
               </div>

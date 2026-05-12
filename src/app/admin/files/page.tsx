@@ -79,7 +79,7 @@ export default function FilesPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="w-8 h-8 border-2 border-[#6366F1] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-[#B9fA3C] border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
@@ -202,7 +202,7 @@ export default function FilesPage() {
               className={view === 'grid' ? "group" : ""}
             >
               {view === 'grid' ? (
-                <Card className="group-hover:border-[#6366F1]/30 transition-all duration-300">
+                <Card className="group-hover:border-[#B9fA3C]/30 transition-all duration-300">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between mb-4">
                       <div className="text-4xl">{getFileIcon(file.mime_type)}</div>

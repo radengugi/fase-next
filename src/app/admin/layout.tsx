@@ -12,7 +12,7 @@ export default function AdminLayout({
 }) {
   return (
     <ToastProvider>
-      <div className={`min-h-screen bg-neutral-950 text-white flex ${inter.className}`}>
+      <div className={`min-h-screen bg-[#40405e] text-white flex ${inter.className}`}>
         <Sidebar />
         <div className="flex-1 flex flex-col min-w-0 ml-[280px]">
           <TopNav />

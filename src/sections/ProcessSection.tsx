@@ -26,9 +26,9 @@ export default function ProcessSection({ steps: cmsSteps }: ProcessSectionProps)
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#6366F1]/10 bg-[#6366F1]/8 mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-4"
           >
-            <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">How We Work</span>
+            <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">How We Work</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -48,9 +48,9 @@ export default function ProcessSection({ steps: cmsSteps }: ProcessSectionProps)
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="group relative p-7 rounded-2xl dark:bg-white/[0.03] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/30 transition-all duration-300 overflow-hidden"
+              className="group relative p-7 rounded-2xl dark:bg-white/[0.03] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#6366F1]/5 rounded-full blur-2xl group-hover:bg-[#6366F1]/10 transition-all duration-500" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#B9fA3C]/5 rounded-full blur-2xl group-hover:bg-[#B9fA3C]/10 transition-all duration-500" />
               <div className="relative z-10">
                 <div className="text-5xl font-black gradient-text mb-5 leading-none opacity-60">
                   {step.number}

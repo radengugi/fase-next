@@ -16,10 +16,10 @@ export default async function ServicesPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 dark:bg-[#0F172A] relative overflow-hidden">
         <div className="absolute inset-0 mesh-gradient" />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/10 to-transparent" />
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#B9fA3C]/10 rounded-full blur-[120px]" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#6366F1]/10 bg-[#6366F1]/8 mb-6">
-            <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">Our Services</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-6">
+            <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Our Services</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold dark:text-white text-[#0F172A] mb-6 leading-tight">
             Services That{' '}
@@ -54,15 +54,15 @@ export default async function ServicesPage() {
                   <Link
                     key={service.slug}
                     href={`/services/${service.slug}`}
-                    className="group flex flex-col p-6 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#6366F1]/10"
+                    className="group flex flex-col p-6 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#B9fA3C]/10"
                   >
                     <div
                       className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ background: `radial-gradient(circle at top left, ${(service.color || '#6366F1')}08, transparent 70%)` }}
+                      style={{ background: `radial-gradient(circle at top left, ${(service.color || '#B9fA3C')}08, transparent 70%)` }}
                     />
                     <div className="relative z-10">
                       <span className="text-3xl mb-4 block">{service.icon}</span>
-                      <h3 className="font-semibold dark:text-white text-[#0F172A] text-base mb-2 group-hover:text-[#6366F1] transition-colors duration-200">
+                      <h3 className="font-semibold dark:text-white text-[#0F172A] text-base mb-2 group-hover:text-[#B9fA3C] transition-colors duration-200">
                         {service.title}
                       </h3>
                       <p className="dark:text-white/40 text-[#0F172A]/50 text-sm leading-relaxed mb-4">
@@ -70,7 +70,7 @@ export default async function ServicesPage() {
                       </p>
                     </div>
                     <div className="relative z-10 mt-auto">
-                      <span className="text-sm text-[#6366F1] font-medium flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
+                      <span className="text-sm text-[#B9fA3C] font-medium flex items-center gap-1 group-hover:gap-2 transition-all duration-200">
                         Learn more
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -88,7 +88,7 @@ export default async function ServicesPage() {
       {/* CTA */}
       <section className="py-32 dark:bg-[#0F172A] bg-white relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#6366F1]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#B9fA3C]/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-[#8B5CF6]/8 rounded-full blur-[100px]" />
         </div>
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
@@ -97,12 +97,12 @@ export default async function ServicesPage() {
             <span className="gradient-text">Project?</span>
           </h2>
           <p className="text-xl dark:text-white/60 text-black/60 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help you achieve your goals with our comprehensive digital services.
+            {`Let's discuss how we can help you achieve your goals with our comprehensive digital services.`}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#6366F1] text-white font-semibold hover:bg-[#6366F1]/80 transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#B9fA3C] text-[#04045E] font-semibold transition-all duration-300 hover:-translate-y-0.5"
             >
               Get in Touch
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

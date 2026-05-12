@@ -131,7 +131,7 @@ export function ClientTable() {
           href={row.original.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#6366F1] hover:underline"
+          className="text-[#B9fA3C] hover:underline"
         >
           {row.original.website}
         </a>
@@ -296,7 +296,7 @@ export function ClientTable() {
         {/* Loading State */}
         {loading && (
           <div className="flex items-center justify-center py-8">
-            <div className="w-8 h-8 border-2 border-[#6366F1] border-t-transparent rounded-full animate-spin" />
+            <div className="w-8 h-8 border-2 border-[#B9fA3C] border-t-transparent rounded-full animate-spin" />
           </div>
         )}
 

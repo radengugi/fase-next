@@ -37,9 +37,9 @@ export default function LoadingScreen() {
         className="flex flex-col items-center gap-8"
       >
         <div className="relative">
-          <div className="relative w-12 h-12 rounded-lg bg-[#04045e] flex items-center justify-center overflow-hidden">
+          <div className="relative w-12 h-12 rounded-lg bg-[#B9fA3C] flex items-center justify-center overflow-hidden">
             <Image
-              src="/logo-fase.png"
+              src="/blue-fase.png"
               width={72}
               height={72}
               alt="FASE Logo"
@@ -56,7 +56,7 @@ export default function LoadingScreen() {
 
         <div className="w-48 h-px dark:bg-white/10 bg-black/10 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-[#6366F1] to-[#A78BFA] rounded-full"
+            className="h-full bg-gradient-to-r from-[#B9fA3C] to-[#A78BFA] rounded-full"
             style={{ width: `${Math.min(progress, 100)}%` }}
             transition={{ ease: 'linear' }}
           />

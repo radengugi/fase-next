@@ -22,7 +22,7 @@ function ServiceForm({ item, onSuccess, onCancel }: { item: CmsService | null; o
     icon: item?.icon ?? "◈",
     title: item?.title ?? "",
     description: item?.description ?? "",
-    color: item?.color ?? "#6366F1",
+    color: item?.color ?? "#B9fA3C",
     is_active: item?.is_active ?? true,
     sort_order: item?.sort_order ?? 0,
   })
@@ -186,7 +186,7 @@ export default function CmsServicesPage() {
         <div className="flex items-center gap-4 p-4 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors">
           <div
             className="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
-            style={{ background: (item.color ?? '#6366F1') + '20', color: item.color ?? '#6366F1' }}
+            style={{ background: (item.color ?? '#B9fA3C') + '20', color: item.color ?? '#B9fA3C' }}
           >
             {item.icon}
           </div>

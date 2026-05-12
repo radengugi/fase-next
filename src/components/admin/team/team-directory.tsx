@@ -102,7 +102,7 @@ export function TeamDirectory({ initialData = [] }: TeamDirectoryProps) {
               setIsEditing(true)
               setShowModal(true)
             }}
-            className="text-xs text-[#6366F1] hover:text-[#818CF8] transition-colors"
+            className="text-xs text-[#B9fA3C] hover:text-[#818CF8] transition-colors"
           >
             Edit
           </button>

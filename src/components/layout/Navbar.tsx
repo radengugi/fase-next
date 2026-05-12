@@ -36,7 +36,7 @@ export default function Navbar() {
       {/* Scroll Progress */}
       <div className="fixed top-0 left-0 right-0 z-[100] h-[2px] bg-transparent">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#6366F1] to-[#A78BFA]"
+          className="h-full bg-[#B9fA3C]"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -47,23 +47,23 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
           ? 'py-3 glass !border-0 shadow-xl shadow-black/10'
-          : 'py-5 bg-transparent'
+          : 'py-5 backdrop-blur-xl shadow-lg shadow-black/5'
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-12 h-12 rounded-lg bg-[#04045e] flex items-center justify-center overflow-hidden">
+            <div className="relative w-12 h-12 rounded-lg bg-[#B9fA3C] flex items-center justify-center overflow-hidden">
               <Image
-                src="/logo-fase.png"
+                src="/blue-fase.png"
                 width={72}
                 height={72}
                 alt="FASE Logo"
                 className="rounded-lg object-contain p-1.5"
               />
-              <div className="absolute inset-0 rounded-lg bg-[#04045e] blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+              <div className="absolute inset-0 rounded-lg bg-[#04045e] blur-lg opacity-0  transition-opacity duration-300" />
             </div>
-            <span className="text-xl font-bold tracking-tight dark:text-white text-[#0F172A]">
+            <span className="text-xl font-bold tracking-tight dark:text-white text-[#B9fA3C]">
               FASE Creative
             </span>
           </Link>
@@ -74,10 +74,10 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-sm font-medium dark:text-white/70 text-[#0F172A]/70 hover:text-[#6366F1] dark:hover:text-[#6366F1] transition-colors duration-200 relative group"
+                className="text-sm font-medium dark:text-white/70 text-[#0F172A]/70 hover:text-[#B9fA3C] dark:hover:text-[#B9fA3C] transition-colors duration-200 relative group"
               >
                 {item.label}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#6366F1] group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#B9fA3C] group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </div>
@@ -85,7 +85,7 @@ export default function Navbar() {
           {/* Right Actions */}
           <div className="flex items-center gap-3">
             {/* Theme Toggle */}
-            <button
+            {/* <button
               onClick={toggle}
               className="w-9 h-9 rounded-xl dark:bg-white/5 bg-black/5 flex items-center justify-center dark:hover:bg-white/10 hover:bg-black/10 transition-all duration-200"
               aria-label="Toggle theme"
@@ -99,11 +99,11 @@ export default function Navbar() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
               )}
-            </button>
+            </button> */}
 
             <Link
               href="/contact"
-              className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#6366F1] text-white text-sm font-medium hover:bg-[#5254CC] transition-all duration-200 hover:shadow-lg hover:shadow-[#6366F1]/25"
+              className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#B9fA3C] text-[#04045E] text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-[#B9fA3C]/25"
             >
               Start Project
             </Link>
@@ -139,7 +139,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 dark:bg-[#0F172A] bg-white flex flex-col pt-24 px-6 pb-10"
+            className="fixed inset-0 z-40 dark:bg-[#40405e] bg-white flex flex-col pt-24 px-6 pb-10"
           >
             <nav className="flex flex-col gap-1 flex-1">
               {navItems.map((item, i) => (
@@ -152,7 +152,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between py-4 border-b dark:border-white/10 border-black/10 dark:text-white text-[#0F172A] text-xl font-medium hover:text-[#6366F1] transition-colors"
+                    className="flex items-center justify-between py-4 border-b dark:border-white/10 border-black/10 dark:text-white text-[#0F172A] text-xl font-medium hover:text-[#B9fA3C] transition-colors"
                   >
                     {item.label}
                     <svg className="w-4 h-4 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -170,7 +170,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center w-full py-4 rounded-2xl bg-[#6366F1] text-white text-base font-semibold hover:bg-[#5254CC] transition-colors"
+                className="flex items-center justify-center w-full py-4 rounded-2xl bg-[#04045E] text-[#B9fA3C] text-base font-semibold transition-colors"
               >
                 Start Your Project
               </Link>

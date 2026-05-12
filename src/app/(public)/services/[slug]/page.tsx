@@ -32,7 +32,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         title: found.title,
         description: found.description || '',
         icon: found.icon,
-        color: found.color || '#6366F1',
+        color: '#B9fA3C',
       };
     }
   }
@@ -47,7 +47,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         title: s.title,
         description: s.description,
         icon: s.icon,
-        color: s.color || '#6366F1',
+        color: s.color || '#B9fA3C',
       };
     }
   }
@@ -64,7 +64,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       title: s.title,
       description: s.description || '',
       icon: s.icon,
-      color: s.color || '#6366F1',
+      color: s.color || '#B9fA3C',
     }))
     .slice(0, 4);
 
@@ -73,9 +73,9 @@ export default async function ServiceDetailPage({ params }: Props) {
       {/* Hero */}
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 mesh-gradient" />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#B9fA3C]/10 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <Link href="/services" className="inline-flex items-center gap-2 dark:text-white/50 text-black/50 text-sm mb-8 hover:text-[#6366F1] transition-colors">
+          <Link href="/services" className="inline-flex items-center gap-2 dark:text-white/50 text-black/50 text-sm mb-8 hover:text-[#B9fA3C] transition-colors">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -167,7 +167,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold hover:opacity-90 transition-all duration-300 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-[#04045E] font-semibold transition-all duration-300 hover:-translate-y-0.5"
             style={{ backgroundColor: service.color }}
           >
             Start a Project
@@ -188,10 +188,10 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <Link
                   key={srv.slug}
                   href={`/services/${srv.slug}`}
-                  className="group flex flex-col p-5 rounded-xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/30 transition-all duration-300 hover:-translate-y-0.5"
+                  className="group flex flex-col p-5 rounded-xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   <span className="text-2xl mb-2">{srv.icon}</span>
-                  <h3 className="font-semibold dark:text-white text-[#0F172A] text-sm mb-1 group-hover:text-[#6366F1] transition-colors">{srv.title}</h3>
+                  <h3 className="font-semibold dark:text-white text-[#0F172A] text-sm mb-1 group-hover:text-[#B9fA3C] transition-colors">{srv.title}</h3>
                   <p className="dark:text-white/40 text-[#0F172A]/50 text-xs line-clamp-2">{srv.description}</p>
                 </Link>
               ))}

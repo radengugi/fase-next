@@ -33,7 +33,7 @@ export default function PortfolioClient() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="w-8 h-8 text-[#6366F1] animate-spin" />
+        <Loader2 className="w-8 h-8 text-[#B9fA3C] animate-spin" />
       </div>
     );
   }
@@ -65,7 +65,7 @@ export default function PortfolioClient() {
             onClick={() => setActive(cat)}
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
               active === cat
-                ? 'bg-[#6366F1] text-white shadow-lg shadow-[#6366F1]/25'
+                ? 'bg-[#B9fA3C] text-[#04045E] shadow-lg shadow-[#B9fA3C]/25'
                 : 'dark:bg-white/5 bg-black/5 dark:text-white/70 text-black/70 hover:dark:bg-white/10 hover:bg-black/10'
             }`}
           >
@@ -90,10 +90,10 @@ export default function PortfolioClient() {
               >
                 <Link
                   href={`/portfolio/${project.id}`}
-                  className="group block rounded-2xl overflow-hidden dark:bg-[#111827] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#6366F1]/10"
+                  className="group block rounded-2xl overflow-hidden dark:bg-[#111827] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#B9fA3C]/10"
                 >
                   {/* Image */}
-                  <div className="relative h-52 overflow-hidden bg-gradient-to-br from-[#6366F1]/20 to-[#8B5CF6]/10">
+                  <div className="relative h-52 overflow-hidden bg-gradient-to-br from-[#B9fA3C]/20 to-[#8B5CF6]/10">
                     {imageUrl ? (
                       <img
                         src={imageUrl}
@@ -115,10 +115,10 @@ export default function PortfolioClient() {
                   {/* Info */}
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-medium text-[#6366F1]">{project.category}</span>
+                      <span className="text-xs font-medium text-[#B9fA3C]">{project.category}</span>
                       <span className="text-xs dark:text-white/30 text-black/40">{project.year}</span>
                     </div>
-                    <h3 className="font-bold dark:text-white text-[#0F172A] text-lg mb-2 group-hover:text-[#6366F1] transition-colors">{project.title}</h3>
+                    <h3 className="font-bold dark:text-white text-[#0F172A] text-lg mb-2 group-hover:text-[#B9fA3C] transition-colors">{project.title}</h3>
                     <p className="dark:text-white/50 text-black/60 text-sm mb-4 line-clamp-2">{project.description}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {project.tags?.slice(0, 3).map(tag => (
