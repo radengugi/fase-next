@@ -52,7 +52,7 @@ export function Modal({
             onClick={onClose}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
           />
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -60,12 +60,12 @@ export function Modal({
               transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
               className={cn(
-                "w-full bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl",
+                "w-full bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl flex flex-col max-h-[90vh]",
                 sizes[size]
               )}
             >
               {(title || showCloseButton) && (
-                <div className="flex items-center justify-between p-6 border-b border-neutral-800">
+                <div className="flex items-center justify-between p-6 border-b border-neutral-800 flex-shrink-0">
                   {title && (
                     <h2 className="text-xl font-semibold">{title}</h2>
                   )}
@@ -79,7 +79,7 @@ export function Modal({
                   )}
                 </div>
               )}
-              <div className="p-6">
+              <div className="p-6 overflow-y-auto flex-1">
                 {children}
               </div>
             </motion.div>

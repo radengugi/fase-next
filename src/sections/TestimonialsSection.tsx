@@ -3,11 +3,19 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '@/hooks/useCounter';
-import { testimonials } from '@/lib/data';
+import { testimonials as staticTestimonials } from '@/lib/data';
+import type { CmsTestimonial } from '@/types/cms';
 
-export default function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  testimonials?: CmsTestimonial[]
+}
+
+export default function TestimonialsSection({ testimonials: cmsTestimonials }: TestimonialsSectionProps) {
   const { ref, inView } = useInView();
   const [active, setActive] = useState(0);
+  const testimonials = cmsTestimonials && cmsTestimonials.length > 0
+    ? cmsTestimonials.map(t => ({ id: t.id, name: t.name, role: t.role || '', company: t.company || '', quote: t.quote, avatar: t.avatar_url || '', rating: t.rating }))
+    : staticTestimonials;
 
   return (
     <section ref={ref} className="py-32 dark:bg-[#080D1A] bg-[#F8FAFC] relative overflow-hidden">

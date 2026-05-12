@@ -12,7 +12,6 @@ export default function Navbar() {
   const scrollY = useScrollY();
   const { theme, toggle } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const isScrolled = scrollY > 20;
@@ -32,8 +31,6 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const servicesNav = navItems.find(n => n.label === 'Services');
-
   return (
     <>
       {/* Scroll Progress */}
@@ -49,7 +46,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'py-3 glass border-b border-white/10 shadow-xl shadow-black/10'
+          ? 'py-3 glass !border-0 shadow-xl shadow-black/10'
           : 'py-5 bg-transparent'
           }`}
       >
@@ -73,60 +70,16 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
-            {navItems.map((item) =>
-              item.label === 'Services' ? (
-                <div
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
-                >
-                  <button className="flex items-center gap-1 text-sm font-medium dark:text-white/70 text-[#0F172A]/70 hover:text-[#6366F1] dark:hover:text-[#6366F1] transition-colors duration-200">
-                    {item.label}
-                    <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <AnimatePresence>
-                    {servicesOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[520px] glass rounded-2xl p-5 border border-white/10 shadow-2xl shadow-black/20"
-                      >
-                        <div className="grid grid-cols-2 gap-1">
-                          {servicesNav?.children?.map((child) => (
-                            <Link
-                              key={child.label}
-                              href={child.href}
-                              className="flex items-center gap-3 px-3 py-2.5 rounded-xl dark:hover:bg-white/5 hover:bg-black/5 transition-colors group"
-                            >
-                              <div className="w-6 h-6 rounded-md bg-[#6366F1]/10 flex items-center justify-center">
-                                <div className="w-2 h-2 rounded-full bg-[#6366F1]" />
-                              </div>
-                              <span className="text-sm dark:text-white/80 text-[#0F172A]/80 group-hover:text-[#6366F1] transition-colors">
-                                {child.label}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="text-sm font-medium dark:text-white/70 text-[#0F172A]/70 hover:text-[#6366F1] dark:hover:text-[#6366F1] transition-colors duration-200 relative group"
-                >
-                  {item.label}
-                  <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#6366F1] group-hover:w-full transition-all duration-300" />
-                </Link>
-              )
-            )}
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium dark:text-white/70 text-[#0F172A]/70 hover:text-[#6366F1] dark:hover:text-[#6366F1] transition-colors duration-200 relative group"
+              >
+                {item.label}
+                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#6366F1] group-hover:w-full transition-all duration-300" />
+              </Link>
+            ))}
           </div>
 
           {/* Right Actions */}

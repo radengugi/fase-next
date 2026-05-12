@@ -1,4 +1,4 @@
-import type { Service, Project, Testimonial, BlogPost, Stat, TeamMember, Value, ProcessStep } from '@/types';
+import type { Service, Project, Testimonial, Stat, TeamMember, Value, ProcessStep } from '@/types';
 
 export const services: Service[] = [
   {
@@ -182,45 +182,6 @@ export const stats: Stat[] = [
   { value: '99', suffix: '%', label: 'Client Satisfaction' },
 ];
 
-export const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'The Future of Digital Branding in the AI Era',
-    excerpt: 'As artificial intelligence reshapes how brands communicate, the agencies that thrive will be those that harness AI as a creative amplifier, not a replacement.',
-    category: 'Branding',
-    date: 'May 2, 2025',
-    readTime: '6 min read',
-    author: 'FASE Editorial',
-    authorAvatar: '/blog/author1.jpg',
-    image: '/blog/ai-branding.jpg',
-    slug: 'future-of-digital-branding-ai-era',
-  },
-  {
-    id: '2',
-    title: 'Designing for Trust: UX Principles for Enterprise Products',
-    excerpt: 'Enterprise software has long been plagued by poor UX. Here is how world-class design thinking is transforming complex systems into intuitive experiences.',
-    category: 'UI/UX Design',
-    date: 'April 24, 2025',
-    readTime: '8 min read',
-    author: 'FASE Editorial',
-    authorAvatar: '/blog/author2.jpg',
-    image: '/blog/enterprise-ux.jpg',
-    slug: 'designing-for-trust-ux-enterprise',
-  },
-  {
-    id: '3',
-    title: 'Why Performance Is the New Premium Feature',
-    excerpt: 'In a world of milliseconds, site speed is no longer a technical concern — it is a brand statement. Premium brands invest in performance as a core user experience.',
-    category: 'Web Development',
-    date: 'April 14, 2025',
-    readTime: '5 min read',
-    author: 'FASE Editorial',
-    authorAvatar: '/blog/author3.jpg',
-    image: '/blog/performance.jpg',
-    slug: 'why-performance-is-the-new-premium-feature',
-  },
-];
-
 export const teamMembers: TeamMember[] = [
   {
     name: 'Aden Fariz',
@@ -316,22 +277,7 @@ export const trustedBrands = [
 export const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  {
-    label: 'Services', href: '/services',
-    children: [
-      { label: 'Branding Strategy', href: '/services#branding' },
-      { label: 'Web Development', href: '/services#web-dev' },
-      { label: 'Mobile Apps', href: '/services#mobile-dev' },
-      { label: 'UI/UX Design', href: '/services#ui-ux' },
-      { label: 'Digital Marketing', href: '/services#digital-marketing' },
-      { label: 'SEO Optimization', href: '/services#seo' },
-      { label: 'Content Production', href: '/services#content' },
-      { label: 'Social Media', href: '/services#social-media' },
-      { label: 'Creative Campaign', href: '/services#creative-campaign' },
-      { label: 'Digital Transformation', href: '/services#digital-transformation' },
-    ],
-  },
+  { label: 'Services', href: '/services' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];

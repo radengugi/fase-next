@@ -1,8 +1,34 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { CmsAbout } from '@/types/cms';
 
-export default function AboutHero() {
+interface AboutHeroProps {
+  data: CmsAbout | null;
+}
+
+const defaultAbout: CmsAbout = {
+  id: '',
+  slug: 'about',
+  hero_headline: 'We Are Builders of Digital Futures',
+  hero_description: 'FASE was born from a simple belief: that the best digital work happens at the intersection of bold strategy, human-centered design, and engineering excellence.',
+  hero_badge: 'About FASE',
+  story_badge: 'Our Story',
+  story_title: 'Built on Craft, Driven by Purpose',
+  story_content: '',
+  founded_year: '2019',
+  countries: '20+',
+  team_members: '40+',
+  awards: '18',
+  is_active: true,
+  sort_order: 0,
+  created_at: '',
+  updated_at: '',
+};
+
+export default function AboutHero({ data }: AboutHeroProps) {
+  const about = data ?? defaultAbout;
+
   return (
     <section className="relative min-h-[70vh] flex items-center pt-24 pb-16 overflow-hidden dark:bg-[#0F172A] bg-white">
       <div className="absolute inset-0 mesh-gradient" />
@@ -16,7 +42,7 @@ export default function AboutHero() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#6366F1]/10 bg-[#6366F1]/8 mb-6"
           >
-            <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">About FASE</span>
+            <span className="text-xs text-[#6366F1] font-semibold uppercase tracking-widest">{about.hero_badge || 'About FASE'}</span>
           </motion.div>
 
           <motion.h1
@@ -25,8 +51,7 @@ export default function AboutHero() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-5xl md:text-6xl lg:text-7xl font-bold dark:text-white text-[#0F172A] leading-[1.05] tracking-tight mb-8"
           >
-            We Are Builders of{' '}
-            <span className="gradient-text">Digital Futures</span>
+            {about.hero_headline}
           </motion.h1>
 
           <motion.p
@@ -35,7 +60,7 @@ export default function AboutHero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl dark:text-white/60 text-[#0F172A]/60 leading-relaxed max-w-2xl"
           >
-            FASE was born from a simple belief: that the best digital work happens at the intersection of bold strategy, human-centered design, and engineering excellence.
+            {about.hero_description}
           </motion.p>
         </div>
       </div>

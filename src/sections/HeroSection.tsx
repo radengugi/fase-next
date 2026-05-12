@@ -2,7 +2,13 @@
 
 import Link from 'next/link';
 import { motion, type Variants } from 'framer-motion';
-import { trustedBrands } from '@/lib/data';
+import { trustedBrands as staticTrustedBrands } from '@/lib/data';
+import type { CmsHero } from '@/types/cms';
+
+interface HeroSectionProps {
+  data?: CmsHero | null
+  trustedBrands?: string[]
+}
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -13,19 +19,43 @@ const fadeUp: Variants = {
   }),
 };
 
-export default function HeroSection() {
+// Default hero data (fallback)
+const defaultHero = {
+  headline: 'Creative Agency for Modern Brands',
+  subheadline: 'FASE helps brands grow through technology, creativity, and digital innovation. We craft experiences that define industries and inspire the world.',
+  cta_primary_label: 'Start Your Project',
+  cta_primary_href: '/contact',
+  cta_secondary_label: 'View Our Works',
+  cta_secondary_href: '/portfolio',
+};
+
+export default function HeroSection({ data: cmsHero, trustedBrands: cmsBrands }: HeroSectionProps) {
+  const trustedBrands = cmsBrands && cmsBrands.length > 0 ? cmsBrands : staticTrustedBrands;
+
+  // Use CMS data or fallback to defaults
+  const hero = cmsHero
+    ? {
+        headline: cmsHero.headline || defaultHero.headline,
+        subheadline: cmsHero.subheadline || defaultHero.subheadline,
+        cta_primary_label: cmsHero.cta_primary_label || defaultHero.cta_primary_label,
+        cta_primary_href: cmsHero.cta_primary_href || defaultHero.cta_primary_href,
+        cta_secondary_label: cmsHero.cta_secondary_label || defaultHero.cta_secondary_label,
+        cta_secondary_href: cmsHero.cta_secondary_href || defaultHero.cta_secondary_href,
+      }
+    : defaultHero;
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden dark:bg-[#0F172A] bg-white">
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden dark:bg-[#0F172A] bg-white">
       {/* Animated Background */}
       <div className="absolute inset-0 mesh-gradient" />
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#6366F1]/10 rounded-full blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#8B5CF6]/8 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#6366F1]/5 rounded-full blur-[150px]" />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-[#6366F1]/10 rounded-full blur-[80px] sm:blur-[120px] animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-[200px] sm:w-[400px] h-[200px] sm:h-[400px] bg-[#8B5CF6]/8 rounded-full blur-[60px] sm:blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[800px] h-[300px] sm:h-[800px] bg-[#6366F1]/5 rounded-full blur-[80px] sm:blur-[150px]" />
       </div>
 
-      {/* Floating Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Floating Shapes — hidden on mobile to avoid overflow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
         <motion.div
           animate={{ y: [-20, 20, -20], rotate: [0, 10, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
@@ -57,17 +87,17 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-20 text-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pt-28 sm:pt-32 pb-16 sm:pb-20 text-center">
         {/* Badge */}
         <motion.div
           custom={0}
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border dark:border-white/10 border-black/10 mb-8"
+          className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass border dark:border-white/10 border-black/10 mb-6 sm:mb-8"
         >
-          <span className="w-2 h-2 rounded-full bg-[#6366F1] animate-pulse" />
-          <span className="text-sm dark:text-white/70 text-[#0F172A]/70 font-medium">
+          <span className="w-2 h-2 rounded-full bg-[#6366F1] animate-pulse flex-shrink-0" />
+          <span className="text-xs sm:text-sm dark:text-white/70 text-[#0F172A]/70 font-medium">
             Award-Winning Digital Agency
           </span>
         </motion.div>
@@ -78,10 +108,16 @@ export default function HeroSection() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold dark:text-white text-[#0F172A] leading-[1.05] tracking-tight text-balance mb-8"
+          className="text-[2rem] xs:text-4xl sm:text-5xl lg:text-7xl xl:text-[5.5rem] font-bold dark:text-white text-[#0F172A] leading-[1.1] sm:leading-[1.05] tracking-tight mb-5 sm:mb-8"
         >
-          Creative Agency for{' '}
-          <span className="gradient-text">Modern Brands</span>
+          {hero.headline.split(' ').map((word, i) => {
+            const lastWordIndex = hero.headline.split(' ').length - 1;
+            return i === lastWordIndex ? (
+              <span key={i} className="gradient-text">{word}</span>
+            ) : (
+              <span key={i}>{word} </span>
+            );
+          })}
         </motion.h1>
 
         {/* Subtitle */}
@@ -90,10 +126,9 @@ export default function HeroSection() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="text-lg sm:text-xl dark:text-white/60 text-[#0F172A]/60 max-w-2xl mx-auto leading-relaxed mb-12"
+          className="text-sm sm:text-lg lg:text-xl dark:text-white/60 text-[#0F172A]/60 max-w-xl sm:max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-12"
         >
-          FASE helps brands grow through technology, creativity, and digital innovation.
-          We craft experiences that define industries and inspire the world.
+          {hero.subheadline}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -102,13 +137,13 @@ export default function HeroSection() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-14 sm:mb-20 w-full"
         >
           <Link
-            href="/contact"
-            className="group relative flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#6366F1] text-white text-base font-semibold overflow-hidden hover:shadow-2xl hover:shadow-[#6366F1]/30 transition-all duration-300 hover:-translate-y-0.5"
+            href={hero.cta_primary_href}
+            className="group relative flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-2xl bg-[#6366F1] text-white text-sm sm:text-base font-semibold overflow-hidden hover:shadow-2xl hover:shadow-[#6366F1]/30 transition-all duration-300 hover:-translate-y-0.5"
           >
-            <span className="relative z-10">Start Your Project</span>
+            <span className="relative z-10">{hero.cta_primary_label}</span>
             <svg className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -116,10 +151,10 @@ export default function HeroSection() {
           </Link>
 
           <Link
-            href="/portfolio"
-            className="group flex items-center gap-3 px-8 py-4 rounded-2xl dark:bg-white/5 bg-black/5 dark:text-white text-[#0F172A] text-base font-semibold dark:border-white/10 border-black/10 border hover:dark:bg-white/10 hover:bg-black/10 transition-all duration-300 hover:-translate-y-0.5"
+            href={hero.cta_secondary_href}
+            className="group flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-2xl dark:bg-white/5 bg-black/5 dark:text-white text-[#0F172A] text-sm sm:text-base font-semibold dark:border-white/10 border-black/10 border hover:dark:bg-white/10 hover:bg-black/10 transition-all duration-300 hover:-translate-y-0.5"
           >
-            View Our Works
+            {hero.cta_secondary_label}
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -133,17 +168,17 @@ export default function HeroSection() {
           initial="hidden"
           animate="show"
         >
-          <p className="text-xs dark:text-white/30 text-black/40 uppercase tracking-widest font-medium mb-6">
+          <p className="text-xs dark:text-white/30 text-black/40 uppercase tracking-widest font-medium mb-4 sm:mb-6">
             Trusted by innovative companies worldwide
           </p>
           <div className="relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-20 z-10 dark:bg-gradient-to-r dark:from-[#0F172A] from-white to-transparent bg-gradient-to-r" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 z-10 dark:bg-gradient-to-l dark:from-[#0F172A] from-white to-transparent bg-gradient-to-l" />
+            <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 z-10 dark:bg-gradient-to-r dark:from-[#0F172A] from-white to-transparent bg-gradient-to-r" />
+            <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 z-10 dark:bg-gradient-to-l dark:from-[#0F172A] from-white to-transparent bg-gradient-to-l" />
             <div className="flex animate-marquee whitespace-nowrap">
               {[...trustedBrands, ...trustedBrands].map((brand, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center mx-8 text-sm font-semibold dark:text-white/20 text-black/25 tracking-widest uppercase shrink-0"
+                  className="inline-flex items-center mx-5 sm:mx-8 text-xs sm:text-sm font-semibold dark:text-white/20 text-black/25 tracking-widest uppercase shrink-0"
                 >
                   {brand}
                 </span>
@@ -158,7 +193,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-xs dark:text-white/30 text-black/30 uppercase tracking-widest">Scroll</span>
         <motion.div

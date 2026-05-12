@@ -5,7 +5,6 @@ const footerLinks = {
   Company: [
     { label: 'About', href: '/about' },
     { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Blog', href: '/blog' },
     { label: 'Careers', href: '#' },
     { label: 'Contact', href: '/contact' },
   ],
@@ -78,7 +77,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="py-6 border-t dark:border-white/5 border-black/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="dark:text-white/30 text-[#0F172A]/40 text-sm">
-            © 2025 FASE Digital Agency. All rights reserved.
+            © 2026 FASE Digital Agency. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="#" className="dark:text-white/30 text-[#0F172A]/40 text-sm hover:text-[#6366F1] transition-colors">Privacy</Link>

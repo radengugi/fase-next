@@ -2,11 +2,19 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useCounter';
-import { services } from '@/lib/data';
+import { services as staticServices } from '@/lib/data';
 import Link from 'next/link';
+import type { CmsService } from '@/types/cms';
 
-export default function ServicesSection() {
+interface ServicesSectionProps {
+  services?: CmsService[]
+}
+
+export default function ServicesSection({ services: cmsServices }: ServicesSectionProps) {
   const { ref, inView } = useInView();
+  const services = cmsServices && cmsServices.length > 0
+    ? cmsServices.map(s => ({ id: s.slug, slug: s.slug, icon: s.icon, title: s.title, description: s.description || '', color: s.color || '#6366F1' }))
+    : staticServices.map(s => ({ id: s.id, slug: s.id, icon: s.icon, title: s.title, description: s.description, color: s.color || '#6366F1' }));
 
   return (
     <section ref={ref} className="py-32 dark:bg-[#0F172A] bg-white relative overflow-hidden">
@@ -57,7 +65,7 @@ export default function ServicesSection() {
               transition={{ duration: 0.6, delay: i * 0.06 }}
             >
               <Link
-                href={`/services#${service.id}`}
+                href={`/services/${service.slug}`}
                 className="group relative flex flex-col p-6 rounded-2xl dark:bg-white/[0.03] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#6366F1]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#6366F1]/10 h-full"
               >
                 <div

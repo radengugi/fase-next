@@ -2,10 +2,18 @@
 
 import { motion } from 'framer-motion';
 import { useInView, useCounter } from '@/hooks/useCounter';
-import { stats } from '@/lib/data';
+import { stats as staticStats } from '@/lib/data';
+import type { CmsStat } from '@/types/cms';
 
-export default function StatsSection() {
+interface StatsSectionProps {
+  stats?: CmsStat[]
+}
+
+export default function StatsSection({ stats: cmsStats }: StatsSectionProps) {
   const { ref, inView } = useInView(0.3);
+  const stats = cmsStats && cmsStats.length > 0
+    ? cmsStats.map(s => ({ value: s.value, suffix: s.suffix || '', label: s.label }))
+    : staticStats;
 
   return (
     <section ref={ref} className="py-24 relative overflow-hidden dark:bg-[#0F172A] bg-white">
@@ -27,7 +35,7 @@ export default function StatsSection() {
   );
 }
 
-function StatItem({ stat, index, trigger }: { stat: typeof stats[0]; index: number; trigger: boolean }) {
+function StatItem({ stat, index, trigger }: { stat: { value: string; suffix: string; label: string }; index: number; trigger: boolean }) {
   const numericEnd = parseInt(stat.value, 10);
   const count = useCounter(numericEnd, 2000, trigger);
 

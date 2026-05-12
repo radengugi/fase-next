@@ -2,8 +2,9 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import type { CmsValue } from '@/types/cms';
 
-const advantages = [
+const staticAdvantages = [
   {
     icon: '⬡',
     title: 'International Standard',
@@ -36,9 +37,22 @@ const advantages = [
   },
 ];
 
-export default function WhyUsSection() {
+interface WhyUsSectionProps {
+  values?: CmsValue[]
+}
+
+export default function WhyUsSection({ values: cmsValues }: WhyUsSectionProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
+
+  // Use CMS data or fallback to static data
+  const advantages = cmsValues && cmsValues.length > 0
+    ? cmsValues.map(v => ({
+        icon: v.icon,
+        title: v.title,
+        description: v.description || '',
+      }))
+    : staticAdvantages;
 
   return (
     <section ref={ref} className="py-32 dark:bg-[#080D1A] bg-[#F8FAFC] relative overflow-hidden">

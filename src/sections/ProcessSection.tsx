@@ -2,10 +2,18 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useCounter';
-import { processSteps } from '@/lib/data';
+import { processSteps as staticProcessSteps } from '@/lib/data';
+import type { CmsProcessStep } from '@/types/cms';
 
-export default function ProcessSection() {
+interface ProcessSectionProps {
+  steps?: CmsProcessStep[]
+}
+
+export default function ProcessSection({ steps: cmsSteps }: ProcessSectionProps) {
   const { ref, inView } = useInView();
+  const processSteps = cmsSteps && cmsSteps.length > 0
+    ? cmsSteps.map(s => ({ number: s.number, title: s.title, description: s.description || '' }))
+    : staticProcessSteps;
 
   return (
     <section ref={ref} className="py-32 dark:bg-[#0F172A] bg-white relative overflow-hidden">
