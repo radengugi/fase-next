@@ -30,7 +30,7 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
   };
 
   return (
-    <section ref={ref} className="py-32 dark:bg-[#080D1A] bg-[#F8FAFC]">
+    <section ref={ref} className="py-32 bg-[#04045E]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
@@ -39,15 +39,15 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#B9fA3C] mb-4"
             >
-              <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Our Work</span>
+              <span className="text-xs text-[#04045E] font-semibold uppercase tracking-widest">Our Work</span>
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold dark:text-white text-[#0F172A] leading-tight"
+              className="text-4xl md:text-5xl font-bold text-white leading-tight"
             >
               Featured <span className="gradient-text">Projects</span>
             </motion.h2>
@@ -79,7 +79,7 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
               >
                 <Link
                   href={`/portfolio/${project.id}`}
-                  className="group block rounded-2xl overflow-hidden dark:bg-[#111827] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#B9fA3C]/10"
+                  className="group block rounded-2xl overflow-hidden bg-white/[0.06] border border-white/[0.12] hover:bg-white/[0.10] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#B9fA3C]/10"
                 >
                   {/* Project Image */}
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -118,12 +118,12 @@ export default function ProjectsSection({ projects: cmsProjects }: ProjectsSecti
                         </>
                       )}
                     </div>
-                    <h3 className="font-bold dark:text-white text-[#0F172A] text-lg mb-2 group-hover:text-[#B9fA3C] transition-colors">{project.title}</h3>
+                    <h3 className="font-bold text-white text-lg mb-2 group-hover:text-[#B9fA3C] transition-colors">{project.title}</h3>
                     {project.description && (
-                      <p className="dark:text-white/50 text-black/60 text-sm mb-4 line-clamp-2">{project.description}</p>
+                      <p className="text-white text-sm mb-4 line-clamp-2">{project.description}</p>
                     )}
                     {project.client && (
-                      <p className="text-xs dark:text-white/30 text-black/40">Client: {project.client}</p>
+                      <p className="text-xs text-white">Client: {project.client}</p>
                     )}
                   </div>
                 </Link>

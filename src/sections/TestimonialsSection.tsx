@@ -18,7 +18,7 @@ export default function TestimonialsSection({ testimonials: cmsTestimonials }: T
     : staticTestimonials;
 
   return (
-    <section ref={ref} className="py-32 dark:bg-[#080D1A] bg-[#F8FAFC] relative overflow-hidden">
+    <section ref={ref} className="py-32 bg-[#04045E] relative overflow-hidden">
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#B9fA3C]/5 rounded-full blur-[120px]" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -28,15 +28,15 @@ export default function TestimonialsSection({ testimonials: cmsTestimonials }: T
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#B9fA3C] mb-4"
           >
-            <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Testimonials</span>
+            <span className="text-xs text-[#04045E] font-semibold uppercase tracking-widest">Testimonials</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold dark:text-white text-[#0F172A]"
+            className="text-4xl md:text-5xl font-bold text-white"
           >
             What Our <span className="gradient-text">Clients Say</span>
           </motion.h2>
@@ -49,7 +49,7 @@ export default function TestimonialsSection({ testimonials: cmsTestimonials }: T
           transition={{ duration: 0.7, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="relative p-8 md:p-12 rounded-3xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.08] border-black/[0.06] overflow-hidden">
+          <div className="relative p-8 md:p-12 rounded-3xl bg-white/[0.06] border border-white/[0.12] overflow-hidden">
             <div className="absolute top-0 left-0 w-40 h-40 bg-[#B9fA3C]/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#8B5CF6]/10 rounded-full blur-3xl" />
 
@@ -74,7 +74,7 @@ export default function TestimonialsSection({ testimonials: cmsTestimonials }: T
                   ))}
                 </div>
 
-                <blockquote className="text-xl md:text-2xl dark:text-white text-[#0F172A] font-medium leading-relaxed mb-8">
+                <blockquote className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-8">
                   &ldquo;{testimonials[active].quote}&rdquo;
                 </blockquote>
 
@@ -83,8 +83,8 @@ export default function TestimonialsSection({ testimonials: cmsTestimonials }: T
                     {testimonials[active].name.charAt(0)}
                   </div>
                   <div>
-                    <p className="dark:text-white text-[#0F172A] font-semibold">{testimonials[active].name}</p>
-                    <p className="dark:text-white/50 text-black/50 text-sm">
+                    <p className="text-white font-semibold">{testimonials[active].name}</p>
+                    <p className="text-white/50 text-sm">
                       {testimonials[active].role} · {testimonials[active].company}
                     </p>
                   </div>
@@ -102,7 +102,7 @@ export default function TestimonialsSection({ testimonials: cmsTestimonials }: T
                 className={`transition-all duration-300 rounded-full ${
                   i === active
                     ? 'w-8 h-2 bg-[#B9fA3C]'
-                    : 'w-2 h-2 dark:bg-white/20 bg-black/20 hover:dark:bg-white/40 hover:bg-black/40'
+                    : 'w-2 h-2 bg-white/40 hover:bg-white/40 hover:bg-black/40'
                 }`}
                 aria-label={`Testimonial ${i + 1}`}
               />

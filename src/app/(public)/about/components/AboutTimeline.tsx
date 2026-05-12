@@ -16,21 +16,21 @@ export default function AboutTimeline() {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="py-24 dark:bg-[#080D1A] bg-[#F8FAFC]">
+    <section ref={ref} className="py-24 bg-[#04045E]">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#B9fA3C] mb-4"
           >
-            <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Our Journey</span>
+            <span className="text-xs text-[#04045E] font-semibold uppercase tracking-widest">Our Journey</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold dark:text-white text-[#0F172A]"
+            className="text-4xl md:text-5xl font-bold text-white text-[#0F172A]"
           >
             Six Years of <span className="gradient-text">Growth</span>
           </motion.h2>
@@ -50,12 +50,12 @@ export default function AboutTimeline() {
                 className="relative pl-16"
               >
                 {/* Dot */}
-                <div className="absolute left-[19px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#B9fA3C] ring-4 dark:ring-[#080D1A] ring-[#F8FAFC]" />
+                <div className="absolute left-[19px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#B9fA3C] ring-4 ring-[#04045E]" />
                 <div className="flex items-center gap-3 mb-1">
                   <span className="text-xs font-bold text-[#B9fA3C] uppercase tracking-widest">{item.year}</span>
-                  <span className="font-semibold dark:text-white text-[#0F172A] text-sm">{item.event}</span>
+                  <span className="font-semibold text-white text-[#0F172A] text-sm">{item.event}</span>
                 </div>
-                <p className="dark:text-white/50 text-black/60 text-sm">{item.desc}</p>
+                <p className="text-white/50 text-black/60 text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>

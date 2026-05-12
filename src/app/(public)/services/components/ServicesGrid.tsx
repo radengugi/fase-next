@@ -8,7 +8,7 @@ export default function ServicesGrid() {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="py-24 dark:bg-[#080D1A] bg-[#F8FAFC]">
+    <section ref={ref} className="py-24 bg-[#04045E]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, i) => (
@@ -18,7 +18,7 @@ export default function ServicesGrid() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="group flex gap-6 p-8 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#B9fA3C]/10"
+              className="group flex gap-6 p-8 rounded-2xl bg-white/[0.06] border border-white/[0.12] hover:bg-white/[0.10] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#B9fA3C]/15"
             >
               <div
                 className="w-14 h-14 rounded-2xl shrink-0 flex items-center justify-center text-2xl"

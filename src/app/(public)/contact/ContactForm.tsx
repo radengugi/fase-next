@@ -24,33 +24,34 @@ export default function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold dark:text-white text-[#0F172A] mb-3">Message Sent!</h3>
-        <p className="dark:text-white/60 text-black/60">We will be in touch within 24 hours. Looking forward to connecting.</p>
+        <h3 className="text-2xl font-bold text-white mb-3">Message Sent!</h3>
+        <p className="text-white/60">We will be in touch within 24 hours. Looking forward to connecting.</p>
       </motion.div>
     );
   }
 
-  const inputClass = "w-full px-4 py-3 rounded-xl dark:bg-white/5 bg-[#F8FAFC] dark:text-white text-[#0F172A] text-sm placeholder:dark:text-white/30 placeholder:text-black/30 border dark:border-white/10 border-black/10 focus:outline-none focus:border-[#B9fA3C] transition-colors";
+  const labelClass = "block text-xs text-white/60 font-medium mb-1.5";
+  const inputClass = "w-full px-4 py-3 rounded-xl bg-white/[0.07] text-white text-sm placeholder:text-white/30 border border-white/[0.12] focus:outline-none focus:border-[#B9fA3C] focus:bg-white/[0.10] transition-colors [&_option]:bg-[#04045E] [&_option]:text-white";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs dark:text-white/60 text-black/60 font-medium mb-1.5">Full Name *</label>
+          <label className={labelClass}>Full Name *</label>
           <input type="text" required placeholder="Your name" value={form.name} onChange={e => setForm({...form, name: e.target.value})} className={inputClass} />
         </div>
         <div>
-          <label className="block text-xs dark:text-white/60 text-black/60 font-medium mb-1.5">Email Address *</label>
+          <label className={labelClass}>Email Address *</label>
           <input type="email" required placeholder="your@email.com" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className={inputClass} />
         </div>
       </div>
       <div>
-        <label className="block text-xs dark:text-white/60 text-black/60 font-medium mb-1.5">Company</label>
+        <label className={labelClass}>Company</label>
         <input type="text" placeholder="Your company name" value={form.company} onChange={e => setForm({...form, company: e.target.value})} className={inputClass} />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs dark:text-white/60 text-black/60 font-medium mb-1.5">Service Needed</label>
+          <label className={labelClass}>Service Needed</label>
           <select value={form.service} onChange={e => setForm({...form, service: e.target.value})} className={inputClass}>
             <option value="">Select a service</option>
             <option>Branding Strategy</option>
@@ -64,7 +65,7 @@ export default function ContactForm() {
           </select>
         </div>
         <div>
-          <label className="block text-xs dark:text-white/60 text-black/60 font-medium mb-1.5">Project Budget</label>
+          <label className={labelClass}>Project Budget</label>
           <select value={form.budget} onChange={e => setForm({...form, budget: e.target.value})} className={inputClass}>
             <option value="">Select budget range</option>
             <option>Under $10,000</option>
@@ -76,7 +77,7 @@ export default function ContactForm() {
         </div>
       </div>
       <div>
-        <label className="block text-xs dark:text-white/60 text-black/60 font-medium mb-1.5">Project Details *</label>
+        <label className={labelClass}>Project Details *</label>
         <textarea
           required
           rows={5}
@@ -90,7 +91,7 @@ export default function ContactForm() {
         type="submit"
         className="w-full py-4 rounded-xl bg-[#B9fA3C] text-[#04045E] font-semibold hover:shadow-xl hover:shadow-[#B9fA3C]/25 transition-all duration-200 hover:-translate-y-0.5"
       >
-        Send Message
+        Send Message →
       </button>
     </form>
   );

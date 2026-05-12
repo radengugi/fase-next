@@ -8,7 +8,7 @@ export default function CTASection() {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="py-32 dark:bg-[#080D1A] bg-[#F8FAFC] relative overflow-hidden">
+    <section ref={ref} className="py-32 bg-[#04045E] relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -17,17 +17,7 @@ export default function CTASection() {
           className="relative rounded-3xl overflow-hidden"
         >
           {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] via-[#1E1B4B] to-[#0F172A]" />
-          <div className="absolute inset-0">
-            <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#B9fA3C]/20 rounded-full blur-[100px]" />
-            <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-[#8B5CF6]/20 rounded-full blur-[80px]" />
-          </div>
-          <div className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `linear-gradient(rgba(99,102,241,1) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,1) 1px, transparent 1px)`,
-              backgroundSize: '50px 50px',
-            }}
-          />
+          <div className="absolute inset-0 bg-[#04045E]" />
 
           {/* Content */}
           <div className="relative z-10 px-8 py-20 md:px-16 md:py-24 text-center">

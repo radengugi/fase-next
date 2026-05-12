@@ -46,8 +46,8 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'py-3 glass !border-0 shadow-xl shadow-black/10'
-          : 'py-5 backdrop-blur-xl shadow-lg shadow-black/5'
+          ? 'py-3 bg-[#04045E]/95 backdrop-blur-xl shadow-xl shadow-black/20'
+          : 'py-5 bg-[#04045E]/90 backdrop-blur-xl shadow-lg shadow-black/10'
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -61,7 +61,7 @@ export default function Navbar() {
                 alt="FASE Logo"
                 className="rounded-lg object-contain p-1.5"
               />
-              <div className="absolute inset-0 rounded-lg bg-[#04045e] blur-lg opacity-0  transition-opacity duration-300" />
+              <div className="absolute inset-0 rounded-lg bg-[#04045E] blur-lg opacity-0  transition-opacity duration-300" />
             </div>
             <span className="text-xl font-bold tracking-tight dark:text-white text-[#B9fA3C]">
               FASE Creative
@@ -74,7 +74,7 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-sm font-medium dark:text-white/70 text-[#0F172A]/70 hover:text-[#B9fA3C] dark:hover:text-[#B9fA3C] transition-colors duration-200 relative group"
+                className="text-sm font-medium dark:text-white/70 text-white hover:text-[#B9fA3C] dark:hover:text-[#B9fA3C] transition-colors duration-200 relative group"
               >
                 {item.label}
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#B9fA3C] group-hover:w-full transition-all duration-300" />
@@ -139,7 +139,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 dark:bg-[#40405e] bg-white flex flex-col pt-24 px-6 pb-10"
+            className="fixed inset-0 z-40 dark:bg-[#04045E] bg-white flex flex-col pt-24 px-6 pb-10"
           >
             <nav className="flex flex-col gap-1 flex-1">
               {navItems.map((item, i) => (

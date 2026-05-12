@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function ServicesHero() {
   return (
-    <section className="relative min-h-[60vh] flex items-center pt-24 pb-16 overflow-hidden dark:bg-[#0F172A] bg-white">
-      <div className="absolute inset-0 mesh-gradient" />
+    <section className="relative min-h-[60vh] flex items-center pt-24 pb-16 overflow-hidden bg-[#04045E]">
       <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[#B9fA3C]/10 rounded-full blur-[120px]" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

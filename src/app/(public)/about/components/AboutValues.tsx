@@ -8,21 +8,21 @@ export default function AboutValues() {
   const { ref, inView } = useInView();
 
   return (
-    <section ref={ref} className="py-24 dark:bg-[#0F172A] bg-white">
+    <section ref={ref} className="py-24 bg-[#04045E]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#B9fA3C] mb-4"
           >
-            <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">Our Values</span>
+            <span className="text-xs text-[#04045E] font-semibold uppercase tracking-widest">Our Values</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold dark:text-white text-[#0F172A]"
+            className="text-4xl md:text-5xl font-bold text-white"
           >
             What We <span className="gradient-text">Stand For</span>
           </motion.h2>
@@ -35,12 +35,12 @@ export default function AboutValues() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="flex gap-6 p-8 rounded-2xl dark:bg-white/[0.03] bg-[#F8FAFC] border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-colors duration-300"
+              className="flex gap-6 p-8 rounded-2xl bg-white/[0.06] border border-white/[0.12] hover:bg-white/[0.10] hover:border-[#B9fA3C]/30 transition-all duration-300"
             >
               <span className="text-3xl shrink-0 mt-1">{value.icon}</span>
               <div>
-                <h3 className="font-bold dark:text-white text-[#0F172A] text-lg mb-2">{value.title}</h3>
-                <p className="dark:text-white/50 text-black/60 text-sm leading-relaxed">{value.description}</p>
+                <h3 className="font-bold text-white text-lg mb-2">{value.title}</h3>
+                <p className="text-white/50 text-black/60 text-sm leading-relaxed">{value.description}</p>
               </div>
             </motion.div>
           ))}

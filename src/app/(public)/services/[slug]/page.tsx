@@ -69,10 +69,9 @@ export default async function ServiceDetailPage({ params }: Props) {
     .slice(0, 4);
 
   return (
-    <div className="min-h-screen dark:bg-[#0F172A] bg-white">
+    <div className="min-h-screen bg-[#04045E]">
       {/* Hero */}
       <section className="pt-32 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 mesh-gradient" />
         <div className="absolute inset-0 bg-gradient-to-br from-[#B9fA3C]/10 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <Link href="/services" className="inline-flex items-center gap-2 dark:text-white/50 text-black/50 text-sm mb-8 hover:text-[#B9fA3C] transition-colors">
@@ -91,7 +90,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {/* Service Details */}
-      <section className="py-16 dark:bg-[#080D1A] bg-[#F8FAFC]">
+      <section className="py-16 bg-[#04045E]">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-2xl font-bold dark:text-white text-[#0F172A] mb-6">What We Offer</h2>
           <div className="prose dark:prose-invert max-w-none">
@@ -105,7 +104,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
           {/* Key Features */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06]">
+            <div className="p-6 rounded-2xl bg-white/[0.06] border border-white/[0.12]">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${service.color}15` }}>
                   <svg className="w-5 h-5" style={{ color: service.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -117,7 +116,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <p className="dark:text-white/60 text-black/60 text-sm">Senior specialists with years of experience in {service.title.toLowerCase()}</p>
             </div>
 
-            <div className="p-6 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06]">
+            <div className="p-6 rounded-2xl bg-white/[0.06] border border-white/[0.12]">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${service.color}15` }}>
                   <svg className="w-5 h-5" style={{ color: service.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -129,7 +128,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <p className="dark:text-white/60 text-black/60 text-sm">Agile methodology with quick turnarounds without compromising quality</p>
             </div>
 
-            <div className="p-6 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06]">
+            <div className="p-6 rounded-2xl bg-white/[0.06] border border-white/[0.12]">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${service.color}15` }}>
                   <svg className="w-5 h-5" style={{ color: service.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -141,7 +140,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               <p className="dark:text-white/60 text-black/60 text-sm">Built to grow with your business from startup to enterprise</p>
             </div>
 
-            <div className="p-6 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06]">
+            <div className="p-6 rounded-2xl bg-white/[0.06] border border-white/[0.12]">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${service.color}15` }}>
                   <svg className="w-5 h-5" style={{ color: service.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -157,7 +156,7 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="py-16 dark:bg-[#0F172A] bg-white">
+      <section className="py-16 bg-[#04045E]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold dark:text-white text-[#0F172A] mb-4">
             Ready to Get Started?
@@ -180,7 +179,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       {/* More Services */}
       {allServices.length > 0 && (
-        <section className="py-16 dark:bg-[#080D1A] bg-[#F8FAFC]">
+        <section className="py-16 bg-[#04045E]">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-2xl font-bold dark:text-white text-[#0F172A] mb-8">More Services</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -188,7 +187,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <Link
                   key={srv.slug}
                   href={`/services/${srv.slug}`}
-                  className="group flex flex-col p-5 rounded-xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-0.5"
+                  className="group flex flex-col p-5 rounded-xl bg-white/[0.06] border border-white/[0.12] hover:bg-white/[0.10] hover:border-[#B9fA3C]/30 transition-all duration-300 hover:-translate-y-0.5"
                 >
                   <span className="text-2xl mb-2">{srv.icon}</span>
                   <h3 className="font-semibold dark:text-white text-[#0F172A] text-sm mb-1 group-hover:text-[#B9fA3C] transition-colors">{srv.title}</h3>

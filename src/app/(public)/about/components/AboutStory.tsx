@@ -40,7 +40,7 @@ export default function AboutStory({ data }: AboutStoryProps) {
   ];
 
   return (
-    <section ref={ref} className="py-24 dark:bg-[#080D1A] bg-[#F8FAFC]">
+    <section ref={ref} className="py-24 bg-[#04045E]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -48,13 +48,13 @@ export default function AboutStory({ data }: AboutStoryProps) {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full dark:bg-[#B9fA3C]/10 bg-[#B9fA3C]/8 mb-6">
-              <span className="text-xs text-[#B9fA3C] font-semibold uppercase tracking-widest">{about.story_badge || 'Our Story'}</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#B9fA3C] mb-6">
+              <span className="text-xs text-[#04045E] font-semibold uppercase tracking-widest">{about.story_badge || 'Our Story'}</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold dark:text-white text-[#0F172A] leading-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
               {about.story_title}
             </h2>
-            <div className="space-y-5 dark:text-white/60 text-[#0F172A]/60 text-base leading-relaxed">
+            <div className="space-y-5 text-white/60 text-[#0F172A]/60 text-base leading-relaxed">
               {paragraphs.length > 0 ? (
                 paragraphs.map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>
@@ -82,9 +82,9 @@ export default function AboutStory({ data }: AboutStoryProps) {
             className="grid grid-cols-2 gap-4"
           >
             {stats.map(item => (
-              <div key={item.label} className="p-6 rounded-2xl dark:bg-white/[0.03] bg-white border dark:border-white/[0.06] border-black/[0.06]">
+              <div key={item.label} className="p-6 rounded-2xl bg-white/[0.06] border border-white/[0.12]">
                 <div className="text-3xl font-bold gradient-text mb-1">{item.value}</div>
-                <div className="text-sm dark:text-white/50 text-black/60">{item.label}</div>
+                <div className="text-sm text-white/50">{item.label}</div>
               </div>
             ))}
           </motion.div>

@@ -28,7 +28,7 @@ export default function LoadingScreen() {
     <motion.div
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-[200] flex flex-col items-center justify-center dark:bg-[#0F172A] bg-white"
+      className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#04045E]"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -45,13 +45,13 @@ export default function LoadingScreen() {
               alt="FASE Logo"
               className="rounded-lg object-contain p-1.5"
             />
-            <div className="absolute inset-0 rounded-lg bg-[#04045e] blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+            <div className="absolute inset-0 rounded-lg bg-[#04045E] blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
           </div>
         </div>
 
         <div className="text-center">
-          <h1 className="text-3xl font-bold dark:text-white text-[#0F172A] tracking-tight mb-1">FASE Creative</h1>
-          <p className="text-sm dark:text-white/40 text-black/40">Digital Agency</p>
+          <h1 className="text-3xl font-bold text-white text-[#0F172A] tracking-tight mb-1">FASE Creative</h1>
+          <p className="text-sm text-white/40 text-black/40">Digital Agency</p>
         </div>
 
         <div className="w-48 h-px dark:bg-white/10 bg-black/10 rounded-full overflow-hidden">
