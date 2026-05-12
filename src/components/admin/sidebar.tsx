@@ -1,24 +1,23 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { cn } from "@/utils/cn"
-import {
-  LayoutDashboard,
-  Users,
-  FolderKanban,
-  Building2,
-  FileText,
-  Upload,
-  Settings,
-  ChevronLeft,
-  ChevronRight,
-  Globe,
-  ChevronDown
-} from "lucide-react"
-import { useState, memo } from "react"
 import { Avatar } from "@/components/ui/avatar"
 import { useAuth } from "@/hooks/useAuth"
+import { cn } from "@/utils/cn"
+import {
+  Building2,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  FolderKanban,
+  Globe,
+  LayoutDashboard,
+  Upload,
+  Users
+} from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { memo, useState } from "react"
 
 interface NavItem {
   label: string
@@ -41,7 +40,6 @@ const navItems: NavItem[] = [
   { label: "Team", href: "/admin/team", icon: Users },
   { label: "Invoices", href: "/admin/invoices", icon: FileText },
   { label: "Files", href: "/admin/files", icon: Upload },
-  { label: "Settings", href: "/admin/settings", icon: Settings },
 ]
 
 const cmsNavItems: NavItem[] = [
@@ -54,7 +52,6 @@ const cmsNavItems: NavItem[] = [
   { label: "Team", href: "/admin/cms/team", icon: Globe, prefetch: true },
   { label: "Values", href: "/admin/cms/values", icon: Globe, prefetch: true },
   { label: "FAQs", href: "/admin/cms/faqs", icon: Globe, prefetch: true },
-  { label: "Settings", href: "/admin/cms/settings", icon: Globe, prefetch: true },
 ]
 
 // Memoize NavItem to prevent re-renders
@@ -107,8 +104,19 @@ export function Sidebar() {
       {/* Logo */}
       <div className="h-16 flex items-center px-6 border-b border-neutral-800 flex-shrink-0">
         {!isCollapsed && (
-          <Link href="/" className="text-2xl font-bold tracking-tight text-white">
-            FASE
+          <Link href="/" className="flex items-center text-2xl font-bold tracking-tight text-white">
+            <div className="relative w-9 h-9 rounded-lg bg-[#B9fA3C] flex items-center justify-center overflow-hidden">
+              <Image
+                src="/blue-fase.png"
+                width={72}
+                height={72}
+                alt="FASE Logo"
+                className="rounded-lg object-contain p-1.5"
+              />
+            </div>
+            <span className="text-lg font-bold tracking-tight dark:text-white text-[#B9fA3C] ml-2">
+              FASE Creative
+            </span>
           </Link>
         )}
         <button

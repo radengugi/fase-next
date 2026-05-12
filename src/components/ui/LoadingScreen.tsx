@@ -56,7 +56,7 @@ export default function LoadingScreen() {
 
         <div className="w-48 h-px dark:bg-white/10 bg-black/10 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-[#B9fA3C] to-[#A78BFA] rounded-full"
+            className="h-full bg-[#B9fA3C] rounded-full"
             style={{ width: `${Math.min(progress, 100)}%` }}
             transition={{ ease: 'linear' }}
           />
