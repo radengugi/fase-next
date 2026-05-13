@@ -13,7 +13,7 @@ interface ServicesSectionProps {
 export default function ServicesSection({ services: cmsServices }: ServicesSectionProps) {
   const { ref, inView } = useInView();
   const services = cmsServices && cmsServices.length > 0
-    ? cmsServices.map(s => ({ id: s.slug, slug: s.slug, icon: s.icon, title: s.title, description: s.description || '', color: s.color || '#B9fA3C' }))
+    ? cmsServices.map(s => ({ id: s.slug, slug: s.slug, icon: '🚀', title: s.title, description: s.description || '', color: '#B9fA3C' }))
     : staticServices.map(s => ({ id: s.id, slug: s.id, icon: s.icon, title: s.title, description: s.description, color: s.color || '#B9fA3C' }));
 
   return (

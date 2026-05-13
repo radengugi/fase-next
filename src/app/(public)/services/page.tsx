@@ -9,7 +9,10 @@ export const metadata: Metadata = {
 
 export default async function ServicesPage() {
   const servicesResult = await cmsServicesRepository.findAll(true);
-  const services = servicesResult.data || [];
+  const services = (servicesResult.data || []).map(s => ({
+    ...s,
+    icon: '🚀', // Default icon for CMS services
+  }));
 
   return (
     <>

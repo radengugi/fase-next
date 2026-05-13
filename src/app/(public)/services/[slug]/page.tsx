@@ -31,7 +31,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         slug: found.slug,
         title: found.title,
         description: found.description || '',
-        icon: found.icon,
+        icon: '🚀', // Default icon for CMS services
         color: '#B9fA3C',
       };
     }
@@ -63,8 +63,8 @@ export default async function ServiceDetailPage({ params }: Props) {
       slug: s.slug,
       title: s.title,
       description: s.description || '',
-      icon: s.icon,
-      color: s.color || '#B9fA3C',
+      icon: '🚀', // Default icon for CMS services
+      color: '#B9fA3C',
     }))
     .slice(0, 4);
 

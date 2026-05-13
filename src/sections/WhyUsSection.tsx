@@ -47,8 +47,8 @@ export default function WhyUsSection({ values: cmsValues }: WhyUsSectionProps) {
 
   // Use CMS data or fallback to static data
   const advantages = cmsValues && cmsValues.length > 0
-    ? cmsValues.map(v => ({
-        icon: v.icon,
+    ? cmsValues.map((v, i) => ({
+        icon: ['⬡', '◈', '◎', '◉', '◐', '◑'][i % 6], // Default icons for CMS values
         title: v.title,
         description: v.description || '',
       }))
