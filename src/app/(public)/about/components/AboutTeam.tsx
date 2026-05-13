@@ -1,11 +1,21 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useCounter';
-import { teamMembers } from '@/lib/data';
+import { teamMembers as staticTeamMembers } from '@/lib/data';
+import type { CmsTeamMember } from '@/types/cms';
 
-export default function AboutTeam() {
+interface AboutTeamProps {
+  members?: CmsTeamMember[]
+}
+
+export default function AboutTeam({ members: cmsMembers }: AboutTeamProps) {
   const { ref, inView } = useInView();
+
+  const members = cmsMembers && cmsMembers.length > 0
+    ? cmsMembers.map(m => ({ name: m.name, role: m.role, bio: m.bio ?? '', avatar_url: m.avatar_url }))
+    : staticTeamMembers.map(m => ({ ...m, avatar_url: null }));
 
   return (
     <section ref={ref} className="py-24 bg-[#04045E]">
@@ -29,7 +39,7 @@ export default function AboutTeam() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {teamMembers.map((member, i) => (
+          {members.map((member, i) => (
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 40 }}
@@ -37,12 +47,15 @@ export default function AboutTeam() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="group p-6 rounded-2xl bg-white/[0.06] border border-white/[0.12] hover:bg-white/[0.10] hover:border-[#B9fA3C]/30 transition-all duration-300 text-center"
             >
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-                {member.name.split(' ').map(n => n[0]).join('')}
+              <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 relative bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white text-2xl font-bold">
+                {member.avatar_url
+                  ? <Image src={member.avatar_url} alt={member.name} fill sizes="80px" className="object-cover" />
+                  : member.name.split(' ').map(n => n[0]).join('')
+                }
               </div>
-              <h3 className="font-bold text-white text-[#0F172A] mb-1">{member.name}</h3>
+              <h3 className="font-bold text-white mb-1">{member.name}</h3>
               <p className="text-xs text-[#B9fA3C] font-medium mb-3">{member.role}</p>
-              <p className="text-white/40 text-black/50 text-xs leading-relaxed">{member.bio}</p>
+              <p className="text-white/40 text-xs leading-relaxed">{member.bio}</p>
             </motion.div>
           ))}
         </div>

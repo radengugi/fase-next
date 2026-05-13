@@ -1,13 +1,12 @@
 import type {
   CmsHero, CmsAbout, CmsService, CmsPortfolio, CmsTestimonial,
-  CmsTeamMember, CmsFaq, CmsStat, CmsValue, CmsProcessStep, GlobalSetting,
+  CmsTeamMember, CmsStat, CmsValue, CmsProcessStep, GlobalSetting,
   CreateCmsHeroInput, UpdateCmsHeroInput,
   CreateCmsAboutInput, UpdateCmsAboutInput,
   CreateCmsServiceInput, UpdateCmsServiceInput,
   CreateCmsPortfolioInput, UpdateCmsPortfolioInput,
   CreateCmsTestimonialInput, UpdateCmsTestimonialInput,
   CreateCmsTeamMemberInput, UpdateCmsTeamMemberInput,
-  CreateCmsFaqInput, UpdateCmsFaqInput,
   CreateCmsStatInput, UpdateCmsStatInput,
   CreateCmsValueInput, UpdateCmsValueInput,
   CreateCmsProcessStepInput, UpdateCmsProcessStepInput,
@@ -86,9 +85,6 @@ export const cmsTestimonialsApi = new CmsApiService<CmsTestimonial, CreateCmsTes
 
 // Team
 export const cmsTeamApi = new CmsApiService<CmsTeamMember, CreateCmsTeamMemberInput, UpdateCmsTeamMemberInput>('team')
-
-// FAQs
-export const cmsFaqApi = new CmsApiService<CmsFaq, CreateCmsFaqInput, UpdateCmsFaqInput>('faqs')
 
 // Stats
 export const cmsStatsApi = new CmsApiService<CmsStat, CreateCmsStatInput, UpdateCmsStatInput>('stats')

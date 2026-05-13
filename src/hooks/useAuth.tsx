@@ -29,21 +29,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }): JSX.E
 
   const fetchUserProfile = useCallback(async (authUser: User) => {
     if (!supabase) return
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("profiles")
       .select("*")
       .eq("id", authUser.id)
-      .single()
+      .maybeSingle()
 
-    if (data && !error) {
-      setUser({
-        id: data.id,
-        email: data.email,
-        full_name: data.full_name,
-        avatar_url: data.avatar_url,
-        role: data.role as UserRole
-      })
-    }
+    const emailPrefix = authUser.email?.split("@")[0] ?? ""
+    setUser({
+      id: authUser.id,
+      email: authUser.email ?? "",
+      full_name: data?.full_name || authUser.user_metadata?.full_name || emailPrefix,
+      avatar_url: data?.avatar_url ?? null,
+      role: (data?.role ?? authUser.user_metadata?.role ?? "client") as UserRole,
+    })
   }, [supabase])
 
   useEffect(() => {
@@ -54,15 +53,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }): JSX.E
 
     let mounted = true
 
-    // Get initial session
-    supabase.auth.getSession().then(async ({ data: { session } }: any) => {
-      if (mounted && session?.user) {
-        await fetchUserProfile(session.user)
-      }
-      if (mounted) setLoading(false)
-    })
-
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event: any, session: any) => {
       if (mounted) {
         if (session?.user) {

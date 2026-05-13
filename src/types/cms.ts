@@ -15,12 +15,9 @@ export interface CmsHero {
 export interface CmsService {
   id: string
   slug: string
-  icon: string
   title: string
   description: string | null
-  color: string | null
   is_active: boolean
-  sort_order: number
   created_at: string
   updated_at: string
 }
@@ -35,7 +32,6 @@ export interface CmsPortfolio {
   year: string | null
   client_name: string | null
   is_active: boolean
-  sort_order: number
   created_at: string
   updated_at: string
 }
@@ -61,22 +57,7 @@ export interface CmsTeamMember {
   role: string
   bio: string | null
   avatar_url: string | null
-  linkedin_url: string | null
-  twitter_url: string | null
-  github_url: string | null
   is_active: boolean
-  sort_order: number
-  created_at: string
-  updated_at: string
-}
-
-export interface CmsFaq {
-  id: string
-  question: string
-  answer: string
-  category: string | null
-  is_active: boolean
-  sort_order: number
   created_at: string
   updated_at: string
 }
@@ -94,11 +75,9 @@ export interface CmsStat {
 
 export interface CmsValue {
   id: string
-  icon: string
   title: string
   description: string | null
   is_active: boolean
-  sort_order: number
   created_at: string
   updated_at: string
 }
@@ -158,8 +137,6 @@ export type UpdateCmsTestimonialInput = Partial<CreateCmsTestimonialInput>
 export type CreateCmsTeamMemberInput = Omit<CmsTeamMember, 'id' | 'created_at' | 'updated_at'>
 export type UpdateCmsTeamMemberInput = Partial<CreateCmsTeamMemberInput>
 
-export type CreateCmsFaqInput = Omit<CmsFaq, 'id' | 'created_at' | 'updated_at'>
-export type UpdateCmsFaqInput = Partial<CreateCmsFaqInput>
 
 export type CreateCmsStatInput = Omit<CmsStat, 'id' | 'created_at' | 'updated_at'>
 export type UpdateCmsStatInput = Partial<CreateCmsStatInput>

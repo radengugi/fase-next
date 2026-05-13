@@ -88,6 +88,7 @@ export async function updateTeamMember(input: UpdateTeamMemberInput) {
   if (input.full_name !== undefined) updateData.full_name = input.full_name
   if (input.role !== undefined) updateData.role = input.role
   if (input.email !== undefined) updateData.email = input.email
+  if (input.avatar_url !== undefined) updateData.avatar_url = input.avatar_url
 
   const { data, error } = await supabase
     .from("profiles")

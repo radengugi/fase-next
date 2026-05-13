@@ -15,11 +15,9 @@ function ValueForm({ item, onSuccess, onCancel }: { item: CmsValue | null; onSuc
   const { showToast } = useToast()
   const loading = creating || updating
   const [form, setForm] = useState({
-    icon: item?.icon || "",
     title: item?.title || "",
     description: item?.description || "",
     is_active: item?.is_active ?? true,
-    sort_order: item?.sort_order ?? 0,
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,17 +43,6 @@ function ValueForm({ item, onSuccess, onCancel }: { item: CmsValue | null; onSuc
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm text-neutral-400 mb-1">Icon *</label>
-        <Input
-          value={form.icon}
-          onChange={e => setForm(f => ({ ...f, icon: e.target.value }))}
-          placeholder="⬡"
-          required
-        />
-        <p className="text-xs text-neutral-500 mt-1">Use emoji characters like: ⬡ ◈ ◎ ◉ ◐ ◑ ◒ ◓ ◔ ◕</p>
-      </div>
-
-      <div>
         <label className="block text-sm text-neutral-400 mb-1">Title *</label>
         <Input
           value={form.title}
@@ -76,15 +63,9 @@ function ValueForm({ item, onSuccess, onCancel }: { item: CmsValue | null; onSuc
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="flex items-center gap-3">
-          <Switch checked={form.is_active} onCheckedChange={v => setForm(f => ({ ...f, is_active: v }))} />
-          <span className="text-sm text-neutral-400">{form.is_active ? "Active" : "Inactive"}</span>
-        </div>
-        <div>
-          <label className="block text-sm text-neutral-400 mb-1">Sort Order</label>
-          <Input type="number" value={form.sort_order} onChange={e => setForm(f => ({ ...f, sort_order: parseInt(e.target.value) || 0 }))} />
-        </div>
+      <div className="flex items-center gap-3">
+        <Switch checked={form.is_active} onCheckedChange={v => setForm(f => ({ ...f, is_active: v }))} />
+        <span className="text-sm text-neutral-400">{form.is_active ? "Active" : "Inactive"}</span>
       </div>
 
       <div className="flex gap-3 pt-2">
@@ -131,9 +112,6 @@ export default function CmsValuesPage() {
       addLabel="Add Value"
       renderCard={(item, onEdit, onDel) => (
         <div className="flex items-center gap-4 p-4 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors">
-          <div className="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center text-2xl flex-shrink-0">
-            {item.icon}
-          </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
               <p className="font-medium text-white">{item.title}</p>

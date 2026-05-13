@@ -5,7 +5,6 @@ import {
   cmsPortfolioRepository,
   cmsTestimonialsRepository,
   cmsTeamRepository,
-  cmsFaqRepository,
   cmsStatsRepository,
   cmsValuesRepository,
   cmsProcessRepository,
@@ -18,7 +17,6 @@ import type {
   CreateCmsPortfolioInput, UpdateCmsPortfolioInput,
   CreateCmsTestimonialInput, UpdateCmsTestimonialInput,
   CreateCmsTeamMemberInput, UpdateCmsTeamMemberInput,
-  CreateCmsFaqInput, UpdateCmsFaqInput,
   CreateCmsStatInput, UpdateCmsStatInput,
   CreateCmsValueInput, UpdateCmsValueInput,
   CreateCmsProcessStepInput, UpdateCmsProcessStepInput,
@@ -107,21 +105,6 @@ export class CmsTeamService {
   async reorder(ids: string[]) { return cmsTeamRepository.reorder(ids) }
 }
 
-// FAQs
-export class CmsFaqService {
-  async getActive() { return cmsFaqRepository.findAll(true) }
-  async getAll() { return cmsFaqRepository.findAll_admin() }
-  async getById(id: string) { return cmsFaqRepository.findById(id) }
-  async create(input: CreateCmsFaqInput) {
-    if (!input.question?.trim()) return { data: null, error: 'Question is required' }
-    if (!input.answer?.trim()) return { data: null, error: 'Answer is required' }
-    return cmsFaqRepository.create(input)
-  }
-  async update(id: string, input: UpdateCmsFaqInput) { return cmsFaqRepository.update(id, input) }
-  async delete(id: string) { return cmsFaqRepository.delete(id) }
-  async reorder(ids: string[]) { return cmsFaqRepository.reorder(ids) }
-}
-
 // Stats
 export class CmsStatsService {
   async getActive() { return cmsStatsRepository.findAll(true) }
@@ -181,7 +164,6 @@ export const cmsServicesService = new CmsServicesService()
 export const cmsPortfolioService = new CmsPortfolioService()
 export const cmsTestimonialsService = new CmsTestimonialsService()
 export const cmsTeamService = new CmsTeamService()
-export const cmsFaqService = new CmsFaqService()
 export const cmsStatsService = new CmsStatsService()
 export const cmsValuesService = new CmsValuesService()
 export const cmsProcessService = new CmsProcessService()

@@ -5,7 +5,7 @@ import AboutValues from './components/AboutValues';
 import AboutTeam from './components/AboutTeam';
 import AboutTimeline from './components/AboutTimeline';
 import CTASection from '@/sections/CTASection';
-import { cmsAboutRepository } from '@/server/repositories/cms.repository';
+import { cmsAboutRepository, cmsTeamRepository, cmsValuesRepository } from '@/server/repositories/cms.repository';
 
 export const metadata: Metadata = {
   title: 'About FASE Creative',
@@ -13,16 +13,22 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const aboutResult = await cmsAboutRepository.findAll(false)
+  const [aboutResult, teamResult, valuesResult] = await Promise.all([
+    cmsAboutRepository.findAll(false),
+    cmsTeamRepository.findAll(true),
+    cmsValuesRepository.findAll(true),
+  ])
   const aboutData = aboutResult.data?.[0] ?? null
+  const teamData = teamResult.data ?? []
+  const valuesData = valuesResult.data ?? []
 
   return (
     <>
       <AboutHero data={aboutData} />
       <AboutStory data={aboutData} />
-      <AboutValues />
+      <AboutValues values={valuesData} />
       <AboutTimeline />
-      <AboutTeam />
+      <AboutTeam members={teamData} />
       <CTASection />
     </>
   );

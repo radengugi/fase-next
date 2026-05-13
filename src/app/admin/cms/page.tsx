@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Globe, Briefcase, MessageSquare, Users, HelpCircle, BarChart2, Settings, Layers, Info } from "lucide-react"
+import { Globe, Briefcase, MessageSquare, Users, BarChart2, Settings, Layers, Info } from "lucide-react"
 
 const sections = [
   { href: "/admin/cms/hero", label: "Hero", icon: Globe, description: "Main hero section content" },
@@ -9,7 +9,6 @@ const sections = [
   { href: "/admin/cms/testimonials", label: "Testimonials", icon: MessageSquare, description: "Client quotes and ratings" },
   { href: "/admin/cms/team", label: "Team", icon: Users, description: "Public team member profiles" },
   { href: "/admin/cms/values", label: "Values", icon: BarChart2, description: "Why Us section content" },
-  { href: "/admin/cms/faqs", label: "FAQs", icon: HelpCircle, description: "Frequently asked questions" },
   { href: "/admin/cms/settings", label: "Global Settings", icon: Settings, description: "SEO, company info, and global content" },
 ]
 

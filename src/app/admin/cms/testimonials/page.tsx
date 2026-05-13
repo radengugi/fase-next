@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
+import { ImageUpload } from "@/components/admin/image-upload"
 import { useState } from "react"
 
 function TestimonialForm({ item, onSuccess, onCancel }: { item: CmsTestimonial | null; onSuccess: () => void; onCancel: () => void }) {
@@ -32,6 +33,15 @@ function TestimonialForm({ item, onSuccess, onCancel }: { item: CmsTestimonial |
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label className="block text-sm text-neutral-400 mb-1">Avatar</label>
+        <ImageUpload
+          value={form.avatar_url}
+          onChange={(url) => setForm(f => ({ ...f, avatar_url: url }))}
+          onRemove={() => setForm(f => ({ ...f, avatar_url: "" }))}
+        />
+        <p className="text-xs text-neutral-500 mt-1.5">Ukuran ideal: <span className="text-neutral-400">400×400px</span> (1:1) · Format: JPG, PNG, WebP · Maks. <span className="text-neutral-400">2MB</span></p>
+      </div>
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm text-neutral-400 mb-1">Name *</label>
@@ -61,10 +71,6 @@ function TestimonialForm({ item, onSuccess, onCancel }: { item: CmsTestimonial |
           rows={3}
           required
         />
-      </div>
-      <div>
-        <label className="block text-sm text-neutral-400 mb-1">Avatar URL</label>
-        <Input value={form.avatar_url} onChange={e => setForm(f => ({ ...f, avatar_url: e.target.value }))} placeholder="/testimonials/..." />
       </div>
       <div className="flex items-center gap-3">
         <Switch checked={form.is_active} onCheckedChange={v => setForm(f => ({ ...f, is_active: v }))} />

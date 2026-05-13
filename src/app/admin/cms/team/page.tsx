@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
+import { ImageUpload } from "@/components/admin/image-upload"
+import Image from "next/image"
 import { useState } from "react"
 
 function TeamMemberForm({ item, onSuccess, onCancel }: { item: CmsTeamMember | null; onSuccess: () => void; onCancel: () => void }) {
@@ -18,11 +20,7 @@ function TeamMemberForm({ item, onSuccess, onCancel }: { item: CmsTeamMember | n
     role: item?.role ?? "",
     bio: item?.bio ?? "",
     avatar_url: item?.avatar_url ?? "",
-    linkedin_url: item?.linkedin_url ?? "",
-    twitter_url: item?.twitter_url ?? "",
-    github_url: item?.github_url ?? "",
     is_active: item?.is_active ?? true,
-    sort_order: item?.sort_order ?? 0,
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -53,22 +51,13 @@ function TeamMemberForm({ item, onSuccess, onCancel }: { item: CmsTeamMember | n
         />
       </div>
       <div>
-        <label className="block text-sm text-neutral-400 mb-1">Avatar URL</label>
-        <Input value={form.avatar_url} onChange={e => setForm(f => ({ ...f, avatar_url: e.target.value }))} placeholder="/team/..." />
-      </div>
-      <div className="grid grid-cols-3 gap-3">
-        <div>
-          <label className="block text-sm text-neutral-400 mb-1">LinkedIn</label>
-          <Input value={form.linkedin_url} onChange={e => setForm(f => ({ ...f, linkedin_url: e.target.value }))} placeholder="https://..." />
-        </div>
-        <div>
-          <label className="block text-sm text-neutral-400 mb-1">Twitter</label>
-          <Input value={form.twitter_url} onChange={e => setForm(f => ({ ...f, twitter_url: e.target.value }))} placeholder="https://..." />
-        </div>
-        <div>
-          <label className="block text-sm text-neutral-400 mb-1">GitHub</label>
-          <Input value={form.github_url} onChange={e => setForm(f => ({ ...f, github_url: e.target.value }))} placeholder="https://..." />
-        </div>
+        <label className="block text-sm text-neutral-400 mb-1">Avatar</label>
+        <ImageUpload
+          value={form.avatar_url}
+          onChange={(url) => setForm(f => ({ ...f, avatar_url: url }))}
+          onRemove={() => setForm(f => ({ ...f, avatar_url: "" }))}
+        />
+        <p className="text-xs text-neutral-500 mt-1.5">Ukuran ideal: <span className="text-neutral-400">400×400px</span> (1:1) · Format: JPG, PNG, WebP · Maks. <span className="text-neutral-400">2MB</span></p>
       </div>
       <div className="flex items-center gap-3">
         <Switch checked={form.is_active} onCheckedChange={v => setForm(f => ({ ...f, is_active: v }))} />
@@ -97,8 +86,11 @@ export default function CmsTeamPage() {
       addLabel="Add Member"
       renderCard={(item, onEdit, onDel) => (
         <div className="flex items-center gap-4 p-4 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white font-medium text-sm flex-shrink-0">
-            {item.name.substring(0, 2).toUpperCase()}
+          <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 relative bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white font-medium text-sm">
+            {item.avatar_url
+              ? <Image src={item.avatar_url} alt={item.name} fill sizes="40px" className="object-cover" />
+              : item.name.substring(0, 2).toUpperCase()
+            }
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">

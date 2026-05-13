@@ -3,12 +3,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import {
   cmsHeroApi, cmsAboutApi, cmsServicesApi, cmsPortfolioApi, cmsTestimonialsApi,
-  cmsTeamApi, cmsFaqApi, cmsStatsApi, cmsValuesApi,
+  cmsTeamApi, cmsStatsApi, cmsValuesApi,
   cmsProcessApi, cmsSettingsApi,
 } from '@/services/api/cms'
 import type {
   CmsHero, CmsAbout, CmsService, CmsPortfolio, CmsTestimonial,
-  CmsTeamMember, CmsFaq, CmsStat, CmsValue, CmsProcessStep, GlobalSetting,
+  CmsTeamMember, CmsStat, CmsValue, CmsProcessStep, GlobalSetting,
 } from '@/types/cms'
 
 // Generic list hook factory
@@ -363,50 +363,6 @@ export function useDeleteCmsTeamMember() {
     setLoading(true)
     try {
       const result = await cmsTeamApi.delete(id)
-      if (result.error) return { success: false as const, error: result.error }
-      return { success: true as const }
-    } catch (e: any) { return { success: false as const, error: e.message } }
-    finally { setLoading(false) }
-  }, [])
-  return { del, loading }
-}
-
-// FAQ hooks
-export const useCmsFaqs = makeListHook<CmsFaq>((admin) => cmsFaqApi.getAll(admin))
-export function useCreateCmsFaq() {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const create = useCallback(async (data: any) => {
-    setLoading(true); setError(null)
-    try {
-      const result = await cmsFaqApi.create(data)
-      if (result.error) { setError(result.error); return { success: false as const, error: result.error } }
-      return { success: true as const, data: result.data }
-    } catch (e: any) { setError(e.message); return { success: false as const, error: e.message } }
-    finally { setLoading(false) }
-  }, [])
-  return { create, loading, error }
-}
-export function useUpdateCmsFaq() {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const update = useCallback(async (id: string, data: any) => {
-    setLoading(true); setError(null)
-    try {
-      const result = await cmsFaqApi.update(id, data)
-      if (result.error) { setError(result.error); return { success: false as const, error: result.error } }
-      return { success: true as const, data: result.data }
-    } catch (e: any) { setError(e.message); return { success: false as const, error: e.message } }
-    finally { setLoading(false) }
-  }, [])
-  return { update, loading, error }
-}
-export function useDeleteCmsFaq() {
-  const [loading, setLoading] = useState(false)
-  const del = useCallback(async (id: string) => {
-    setLoading(true)
-    try {
-      const result = await cmsFaqApi.delete(id)
       if (result.error) return { success: false as const, error: result.error }
       return { success: true as const }
     } catch (e: any) { return { success: false as const, error: e.message } }

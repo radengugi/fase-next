@@ -2,13 +2,12 @@ import { createClient } from '@/lib/supabase/server'
 import { BaseRepository, type ApiResponse, type PaginatedResponse } from './base.repository'
 import type {
   CmsHero, CmsService, CmsPortfolio, CmsTestimonial,
-  CmsTeamMember, CmsFaq, CmsStat, CmsValue, CmsProcessStep, CmsAbout, GlobalSetting,
+  CmsTeamMember, CmsStat, CmsValue, CmsProcessStep, CmsAbout, GlobalSetting,
   CreateCmsHeroInput, UpdateCmsHeroInput,
   CreateCmsServiceInput, UpdateCmsServiceInput,
   CreateCmsPortfolioInput, UpdateCmsPortfolioInput,
   CreateCmsTestimonialInput, UpdateCmsTestimonialInput,
   CreateCmsTeamMemberInput, UpdateCmsTeamMemberInput,
-  CreateCmsFaqInput, UpdateCmsFaqInput,
   CreateCmsStatInput, UpdateCmsStatInput,
   CreateCmsValueInput, UpdateCmsValueInput,
   CreateCmsProcessStepInput, UpdateCmsProcessStepInput,
@@ -19,12 +18,12 @@ export type { ApiResponse, PaginatedResponse } from './base.repository'
 
 // Generic CRUD helpers for CMS tables
 class CmsTableRepository<T, CreateInput, UpdateInput> extends BaseRepository {
-  constructor(private tableName: string) { super() }
+  constructor(private tableName: string, private orderBy: string = 'sort_order') { super() }
 
   async findAll(activeOnly = true): Promise<ApiResponse<T[]>> {
     try {
       const supabase = await createClient()
-      let query = supabase.from(this.tableName as any).select('*').order('sort_order', { ascending: true })
+      let query = supabase.from(this.tableName as any).select('*').order(this.orderBy, { ascending: true })
       if (activeOnly) query = (query as any).eq('is_active', true)
       const { data, error } = await query
       if (error) throw error
@@ -40,7 +39,7 @@ class CmsTableRepository<T, CreateInput, UpdateInput> extends BaseRepository {
       const { data, error } = await supabase
         .from(this.tableName as any)
         .select('*')
-        .order('sort_order', { ascending: true })
+        .order(this.orderBy, { ascending: true })
       if (error) throw error
       return { data: (data as T[]) || [], error: null }
     } catch (e: any) {
@@ -123,7 +122,7 @@ class CmsTableRepository<T, CreateInput, UpdateInput> extends BaseRepository {
 
 // Specialized portfolio with category filter
 class PortfolioRepository extends CmsTableRepository<CmsPortfolio, CreateCmsPortfolioInput, UpdateCmsPortfolioInput> {
-  constructor() { super('cms_portfolio') }
+  constructor() { super('cms_portfolio', 'created_at') }
 
   async findByCategory(category: string): Promise<ApiResponse<CmsPortfolio[]>> {
     try {
@@ -133,7 +132,7 @@ class PortfolioRepository extends CmsTableRepository<CmsPortfolio, CreateCmsPort
         .select('*')
         .eq('category', category)
         .eq('is_active', true)
-        .order('sort_order', { ascending: true })
+        .order('created_at', { ascending: true })
       if (error) throw error
       return { data: data || [], error: null }
     } catch (e: any) {
@@ -264,12 +263,11 @@ class AboutRepository extends CmsTableRepository<CmsAbout, CreateCmsAboutInput, 
 // Export repository instances
 export const cmsHeroRepository = new HeroRepository()
 export const cmsAboutRepository = new AboutRepository()
-export const cmsServicesRepository = new CmsTableRepository<CmsService, CreateCmsServiceInput, UpdateCmsServiceInput>('cms_services')
+export const cmsServicesRepository = new CmsTableRepository<CmsService, CreateCmsServiceInput, UpdateCmsServiceInput>('cms_services', 'created_at')
 export const cmsPortfolioRepository = new PortfolioRepository()
 export const cmsTestimonialsRepository = new CmsTableRepository<CmsTestimonial, CreateCmsTestimonialInput, UpdateCmsTestimonialInput>('cms_testimonials')
-export const cmsTeamRepository = new CmsTableRepository<CmsTeamMember, CreateCmsTeamMemberInput, UpdateCmsTeamMemberInput>('cms_team_members')
-export const cmsFaqRepository = new CmsTableRepository<CmsFaq, CreateCmsFaqInput, UpdateCmsFaqInput>('cms_faqs')
+export const cmsTeamRepository = new CmsTableRepository<CmsTeamMember, CreateCmsTeamMemberInput, UpdateCmsTeamMemberInput>('cms_team_members', 'created_at')
 export const cmsStatsRepository = new CmsTableRepository<CmsStat, CreateCmsStatInput, UpdateCmsStatInput>('cms_stats')
-export const cmsValuesRepository = new CmsTableRepository<CmsValue, CreateCmsValueInput, UpdateCmsValueInput>('cms_values')
+export const cmsValuesRepository = new CmsTableRepository<CmsValue, CreateCmsValueInput, UpdateCmsValueInput>('cms_values', 'created_at')
 export const cmsProcessRepository = new CmsTableRepository<CmsProcessStep, CreateCmsProcessStepInput, UpdateCmsProcessStepInput>('cms_process_steps')
 export const globalSettingsRepository = new GlobalSettingsRepository()

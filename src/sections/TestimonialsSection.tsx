@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '@/hooks/useCounter';
 import { testimonials as staticTestimonials } from '@/lib/data';
@@ -79,8 +80,11 @@ export default function TestimonialsSection({ testimonials: cmsTestimonials }: T
                 </blockquote>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white font-bold">
-                    {testimonials[active].name.charAt(0)}
+                  <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 relative bg-gradient-to-br from-[#B9fA3C] to-[#8B5CF6] flex items-center justify-center text-white font-bold">
+                    {testimonials[active].avatar
+                      ? <Image src={testimonials[active].avatar} alt={testimonials[active].name} fill sizes="48px" className="object-cover" />
+                      : testimonials[active].name.charAt(0)
+                    }
                   </div>
                   <div>
                     <p className="text-white font-semibold">{testimonials[active].name}</p>

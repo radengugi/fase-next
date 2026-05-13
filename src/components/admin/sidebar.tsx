@@ -51,7 +51,6 @@ const cmsNavItems: NavItem[] = [
   { label: "Testimonials", href: "/admin/cms/testimonials", icon: Globe, prefetch: true },
   { label: "Team", href: "/admin/cms/team", icon: Globe, prefetch: true },
   { label: "Values", href: "/admin/cms/values", icon: Globe, prefetch: true },
-  { label: "FAQs", href: "/admin/cms/faqs", icon: Globe, prefetch: true },
 ]
 
 // Memoize NavItem to prevent re-renders
@@ -105,7 +104,16 @@ export function Sidebar() {
       <div className="h-16 flex items-center px-6 border-b border-neutral-800 flex-shrink-0">
         {!isCollapsed && (
           <Link href="/" className="flex items-center text-2xl font-bold tracking-tight text-white">
-            <div className="relative w-9 h-9 rounded-lg bg-[#B9fA3C] flex items-center justify-center overflow-hidden">
+            <div className="relative w-24 h-10 rounded-lg flex items-center justify-center overflow-hidden group-hover:ring-[#B9fA3C]/50 transition-all duration-300">
+              <Image
+                src="/logo-fase.png"
+                width={56}
+                height={56}
+                alt="FASE Logo"
+                className="object-cover w-full h-full"
+              />
+            </div>
+            {/* <div className="relative w-9 h-9 rounded-lg bg-[#B9fA3C] flex items-center justify-center overflow-hidden">
               <Image
                 src="/blue-fase.png"
                 width={72}
@@ -116,7 +124,7 @@ export function Sidebar() {
             </div>
             <span className="text-lg font-bold tracking-tight dark:text-white text-[#B9fA3C] ml-2">
               FASE Creative
-            </span>
+            </span> */}
           </Link>
         )}
         <button

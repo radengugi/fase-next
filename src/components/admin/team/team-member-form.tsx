@@ -6,6 +6,7 @@ import { createTeamMember, updateTeamMember } from "@/services/team"
 import { Input } from "@/components/ui/input"
 import { Select } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import { ImageUpload } from "@/components/admin/image-upload"
 import type { TeamMember, CreateTeamMemberInput } from "@/types/team"
 import { UserRole } from "@/types/auth"
 
@@ -24,6 +25,7 @@ export function TeamMemberForm({ member, onSuccess }: TeamMemberFormProps) {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [avatarUrl, setAvatarUrl] = useState(member?.avatar_url ?? "")
 
   async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -38,7 +40,7 @@ export function TeamMemberForm({ member, onSuccess }: TeamMemberFormProps) {
     }
 
     const result = member
-      ? await updateTeamMember({ ...data, id: member.id })
+      ? await updateTeamMember({ ...data, id: member.id, avatar_url: avatarUrl || null })
       : await createTeamMember(data)
 
     if (result.error) {
@@ -52,12 +54,20 @@ export function TeamMemberForm({ member, onSuccess }: TeamMemberFormProps) {
     router.refresh()
   }
 
-  const handleCancel = () => {
-    onSuccess?.()
-  }
-
   return (
     <form onSubmit={onSubmit} className="space-y-6">
+      {member && (
+        <div>
+          <label className="block text-sm text-neutral-400 mb-1">Avatar</label>
+          <ImageUpload
+            value={avatarUrl}
+            onChange={setAvatarUrl}
+            onRemove={() => setAvatarUrl("")}
+          />
+          <p className="text-xs text-neutral-500 mt-1.5">Ukuran ideal: <span className="text-neutral-400">400×400px</span> (1:1) · Format: JPG, PNG, WebP · Maks. <span className="text-neutral-400">2MB</span></p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input
           name="full_name"
@@ -98,7 +108,7 @@ export function TeamMemberForm({ member, onSuccess }: TeamMemberFormProps) {
         <Button
           type="button"
           variant="ghost"
-          onClick={handleCancel}
+          onClick={onSuccess}
           disabled={isLoading}
         >
           Cancel

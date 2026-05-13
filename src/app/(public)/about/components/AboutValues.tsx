@@ -2,10 +2,19 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useCounter';
-import { values } from '@/lib/data';
+import { values as staticValues } from '@/lib/data';
+import type { CmsValue } from '@/types/cms';
 
-export default function AboutValues() {
+interface AboutValuesProps {
+  values?: CmsValue[]
+}
+
+export default function AboutValues({ values: cmsValues }: AboutValuesProps) {
   const { ref, inView } = useInView();
+
+  const values = cmsValues && cmsValues.length > 0
+    ? cmsValues.map(v => ({ title: v.title, description: v.description ?? '' }))
+    : staticValues.map(v => ({ title: v.title, description: v.description }));
 
   return (
     <section ref={ref} className="py-24 bg-[#04045E]">
@@ -35,13 +44,10 @@ export default function AboutValues() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="flex gap-6 p-8 rounded-2xl bg-white/[0.06] border border-white/[0.12] hover:bg-white/[0.10] hover:border-[#B9fA3C]/30 transition-all duration-300"
+              className="p-8 rounded-2xl bg-white/[0.06] border border-white/[0.12] hover:bg-white/[0.10] hover:border-[#B9fA3C]/30 transition-all duration-300"
             >
-              <span className="text-3xl shrink-0 mt-1">{value.icon}</span>
-              <div>
-                <h3 className="font-bold text-white text-lg mb-2">{value.title}</h3>
-                <p className="text-white/50 text-black/60 text-sm leading-relaxed">{value.description}</p>
-              </div>
+              <h3 className="font-bold text-white text-lg mb-2">{value.title}</h3>
+              <p className="text-white/50 text-sm leading-relaxed">{value.description}</p>
             </motion.div>
           ))}
         </div>

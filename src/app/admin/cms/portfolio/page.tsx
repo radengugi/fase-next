@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { ImageUpload } from "@/components/admin/image-upload"
+import Image from "next/image"
 import { useState } from "react"
 import { useToast } from "@/components/ui/toast"
 
@@ -25,7 +26,6 @@ function PortfolioForm({ item, onSuccess, onCancel }: { item: CmsPortfolio | nul
     year: item?.year ?? new Date().getFullYear().toString(),
     client_name: item?.client_name ?? "",
     is_active: item?.is_active ?? true,
-    sort_order: item?.sort_order ?? 0,
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,6 +58,7 @@ function PortfolioForm({ item, onSuccess, onCancel }: { item: CmsPortfolio | nul
           onChange={(url) => setForm(f => ({ ...f, image_url: url }))}
           onRemove={() => setForm(f => ({ ...f, image_url: "" }))}
         />
+        <p className="text-xs text-neutral-500 mt-1.5">Ukuran ideal: <span className="text-neutral-400">1280×720px</span> (16:9) · Format: JPG, PNG, WebP · Maks. <span className="text-neutral-400">2MB</span></p>
       </div>
 
       <div>
@@ -96,15 +97,9 @@ function PortfolioForm({ item, onSuccess, onCancel }: { item: CmsPortfolio | nul
         <Input value={form.tags} onChange={e => setForm(f => ({ ...f, tags: e.target.value }))} placeholder="Next.js, TypeScript, Figma" />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="flex items-center gap-3">
-          <Switch checked={form.is_active} onCheckedChange={v => setForm(f => ({ ...f, is_active: v }))} />
-          <span className="text-sm text-neutral-400">{form.is_active ? "Active" : "Inactive"}</span>
-        </div>
-        <div>
-          <label className="block text-sm text-neutral-400 mb-1">Sort Order</label>
-          <Input type="number" value={form.sort_order} onChange={e => setForm(f => ({ ...f, sort_order: parseInt(e.target.value) || 0 }))} />
-        </div>
+      <div className="flex items-center gap-3">
+        <Switch checked={form.is_active} onCheckedChange={v => setForm(f => ({ ...f, is_active: v }))} />
+        <span className="text-sm text-neutral-400">{form.is_active ? "Active" : "Inactive"}</span>
       </div>
 
       <div className="flex gap-3 pt-2">
@@ -135,8 +130,8 @@ export default function CmsPortfolioPage() {
       renderCard={(item, onEdit, onDel) => (
         <div className="flex items-center gap-4 p-4 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors">
           {item.image_url ? (
-            <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-800">
-              <img src={item.image_url} alt={item.title} className="w-full h-full object-cover" />
+            <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-800 relative">
+              <Image src={item.image_url} alt={item.title} fill sizes="64px" className="object-cover" />
             </div>
           ) : (
             <div className="w-16 h-16 rounded-lg bg-neutral-800 flex items-center justify-center text-neutral-500 font-bold text-lg flex-shrink-0">

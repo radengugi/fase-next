@@ -2,7 +2,7 @@
 
 import { Bell, Search, LogOut } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Avatar } from "@/components/ui/avatar"
 import { createClient } from "@/utils/supabase/client"
@@ -16,8 +16,24 @@ export function TopNav() {
   const supabase = createClient()
   const router = useRouter()
   const { user } = useAuth()
+  const userMenuRef = useRef<HTMLDivElement>(null)
+  const notifRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setShowUserMenu(false)
+      }
+      if (notifRef.current && !notifRef.current.contains(event.target as Node)) {
+        setShowNotifications(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   const handleSignOut = async () => {
+    setShowUserMenu(false)
     await supabase.auth.signOut()
     router.push("/login")
   }
@@ -42,7 +58,7 @@ export function TopNav() {
         {/* Actions */}
         <div className="flex items-center gap-3">
           {/* Notifications */}
-          <div className="relative">
+          {/* <div className="relative" ref={notifRef}>
             <Button
               variant="ghost"
               size="sm"
@@ -78,17 +94,17 @@ export function TopNav() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
 
           {/* User Menu */}
-          <div className="relative">
+          <div className="relative" ref={userMenuRef}>
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
               className="flex items-center gap-3 cursor-pointer hover:bg-white/5 rounded-lg p-2 transition-colors"
             >
               <Avatar
                 src={user?.avatar_url || undefined}
-                fallback={user?.full_name || "User"}
+                fallback={user?.full_name || user?.email?.split("@")[0] || "?"}
                 size="sm"
               />
               <div className="hidden lg:block text-left">
@@ -109,10 +125,10 @@ export function TopNav() {
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   className="absolute right-0 top-full mt-2 w-48 bg-neutral-900 border border-neutral-800 rounded-xl shadow-2xl overflow-hidden z-50"
                 >
-                  <button className="w-full px-4 py-3 text-left text-sm text-white hover:bg-white/5 transition-colors">
-                    Profile
-                  </button>
-                  <button className="w-full px-4 py-3 text-left text-sm text-white hover:bg-white/5 transition-colors">
+                  <button
+                    onClick={() => { setShowUserMenu(false); router.push("/admin/cms/settings") }}
+                    className="w-full px-4 py-3 text-left text-sm text-white hover:bg-white/5 transition-colors"
+                  >
                     Settings
                   </button>
                   <div className="h-px bg-neutral-800" />
