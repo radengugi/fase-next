@@ -28,16 +28,15 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2 group mb-6">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br bg-[#B9fA3C] flex items-center justify-center text-white font-bold text-sm">
+              <div className="relative w-24 h-10 rounded-lg flex items-center justify-center overflow-hidden group-hover:ring-[#B9fA3C]/50 transition-all duration-300 -ml-2">
                 <Image
-                  src="/blue-fase.png"
-                  width={72}
-                  height={72}
+                  src="/logo-fase.png"
+                  width={56}
+                  height={56}
                   alt="FASE Logo"
-                  className="rounded-lg object-contain p-1.5"
+                  className="object-cover w-full h-full"
                 />
               </div>
-              <span className="text-xl font-bold tracking-tight dark:text-white text-white">FASE Creative</span>
             </Link>
             <p className="dark:text-white/50 text-white/60 text-sm leading-relaxed max-w-xs mb-8">
               We help ambitious brands grow through technology, creativity, and digital innovation. Based everywhere that matters.
@@ -84,7 +83,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="py-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="dark:text-white/30 text-white/40 text-sm">
-            © 2026 FASE Digital Agency. All rights reserved.
+            © 2026 FASE Creative Digital Agency. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="#" className="dark:text-white/30 text-white/40 text-sm hover:text-[#B9fA3C] transition-colors">Privacy</Link>

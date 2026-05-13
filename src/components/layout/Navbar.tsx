@@ -46,26 +46,22 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? 'py-3 bg-[#04045E]/95 backdrop-blur-xl shadow-xl shadow-black/20'
-          : 'py-5 bg-[#04045E]/90 backdrop-blur-xl shadow-lg shadow-black/10'
+          ? 'py-2 bg-[#04045E]/95 backdrop-blur-xl shadow-xl shadow-black/20'
+          : 'py-3 bg-[#04045E]/90 backdrop-blur-xl shadow-lg shadow-black/10'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-12">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-12 h-12 rounded-lg bg-[#B9fA3C] flex items-center justify-center overflow-hidden">
+          <Link href="/" className="flex items-center -ml-2">
+            <div className="relative w-18 h-10 rounded-lg flex items-center justify-center overflow-hidden group-hover:ring-[#B9fA3C]/50 transition-all duration-300">
               <Image
-                src="/blue-fase.png"
-                width={72}
-                height={72}
+                src="/logo-fase.png"
+                width={56}
+                height={56}
                 alt="FASE Logo"
-                className="rounded-lg object-contain p-1.5"
+                className="object-cover w-full h-full"
               />
-              <div className="absolute inset-0 rounded-lg bg-[#04045E] blur-lg opacity-0  transition-opacity duration-300" />
             </div>
-            <span className="text-xl font-bold tracking-tight dark:text-white text-[#B9fA3C]">
-              FASE Creative
-            </span>
           </Link>
 
           {/* Desktop Nav */}

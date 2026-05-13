@@ -36,20 +36,17 @@ export default function LoadingScreen() {
         transition={{ duration: 0.5 }}
         className="flex flex-col items-center gap-8"
       >
-        <div className="relative">
-          <div className="relative w-12 h-12 rounded-lg bg-[#B9fA3C] flex items-center justify-center overflow-hidden">
-            <Image
-              src="/blue-fase.png"
-              width={72}
-              height={72}
-              alt="FASE Logo"
-              className="rounded-lg object-contain p-1.5"
-            />
-            <div className="absolute inset-0 rounded-lg bg-[#04045E] blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
-          </div>
+        <div className="w-48 h-20 rounded-lg flex items-center justify-center overflow-hidden group-hover:ring-[#B9fA3C]/50 transition-all duration-300">
+          <Image
+            src="/logo-fase.png"
+            width={56}
+            height={56}
+            alt="FASE Logo"
+            className="object-cover w-full h-full"
+          />
         </div>
 
-        <div className="text-center">
+        <div className="text-center -mt-4">
           <h1 className="text-3xl font-bold text-white text-[#0F172A] tracking-tight mb-1">FASE Creative</h1>
           <p className="text-sm text-white/40 text-black/40">Digital Agency</p>
         </div>
