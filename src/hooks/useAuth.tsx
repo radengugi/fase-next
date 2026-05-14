@@ -89,6 +89,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }): JSX.E
   const signOut = async () => {
     if (!supabase) return
     await supabase.auth.signOut()
+    window.location.href = "/login"
   }
 
   const hasRole = useCallback((roles: UserRole[]) => {

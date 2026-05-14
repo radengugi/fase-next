@@ -142,7 +142,7 @@ export function Sidebar() {
 
       {/* Navigation */}
       <nav className="p-4 space-y-1 overflow-y-auto flex-1">
-        {navItems.map((item) => {
+        {/* {navItems.map((item) => {
           const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
           return (
             <NavItem
@@ -152,7 +152,7 @@ export function Sidebar() {
               isCollapsed={isCollapsed}
             />
           )
-        })}
+        })} */}
 
         {/* CMS Group */}
         {!isCollapsed && (

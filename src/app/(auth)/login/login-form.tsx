@@ -43,7 +43,7 @@ export function LoginForm() {
       .single()
 
     if (profileError) {
-      router.push('/admin/dashboard')
+      router.push('/admin/cms')
       setIsLoading(false)
       return
     }
@@ -54,7 +54,7 @@ export function LoginForm() {
     router.refresh()
 
     if (userRole === 'super_admin' || userRole === 'admin' || userRole === 'project_manager' || userRole === 'designer' || userRole === 'developer') {
-      router.push('/admin/dashboard')
+      router.push('/admin/cms')
     } else {
       // For client or unknown role
       router.push('/')

@@ -35,7 +35,7 @@ export function TopNav() {
   const handleSignOut = async () => {
     setShowUserMenu(false)
     await supabase.auth.signOut()
-    router.push("/login")
+    window.location.href = "/login"
   }
 
   return (
